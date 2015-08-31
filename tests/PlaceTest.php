@@ -235,6 +235,29 @@
           $this->assertEquals([], $result);
         }
 
+        function testUpdateName()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
+
+          //Act
+          $test_place->updateName($new_name);
+          $test_place->getName();
+
+          //Assert
+          $this->assertEquals(, $result);
+
+        }
+        function testUpdateAddress
+        function testUpdateLocation
+        function testUpdateAll
+
     }
 
 
