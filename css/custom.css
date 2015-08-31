@@ -1,0 +1,11 @@
+.container {
+    width: 50%;
+}
+
+h1 {
+    align: center;
+}
+
+.right {
+    display:inline;
+}
