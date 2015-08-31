@@ -32,7 +32,7 @@
             //Act
             $test_place->setPlaceName($place_name);
             $result = $test_place->getPlaceName();
-            
+
             //Assert
             $this->assertEquals("Director Park", $result);
 
@@ -57,12 +57,37 @@
 
         function test_setAddress()
         {
+            //Arrange
+            $place_name = "Multnomah Whiskey Library";
+            $address = "1124 SW Alder St";
+            $longitude = 45.520999;
+            $latitude = -122.683429;
+            $id = 1;
+            $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
 
+            //Act
+            $test_place->setAddress($address);
+            $result = $test_place->getAddress();
+
+            //Assert
+            $this->assertEquals("1124 SW Alder St", $result);
         }
 
         function test_getAddress()
         {
+            //Arrange
+            $place_name = "Multnomah Whiskey Library";
+            $address = "1124 SW Alder St";
+            $longitude = 45.520999;
+            $latitude = -122.683429;
+            $id = 1;
+            $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
 
+            //Act
+            $result = $test_place->getAddress();
+
+            //Assert
+            $this->assertEquals($address, $result);
         }
 
         function test_setLongitude()
