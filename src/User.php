@@ -118,5 +118,34 @@
 			$this->updateLocation($new_longitude, $new_latitude);
 			$this->update($new_signed_in);
 		}
+		
+		function delete()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()};");
+		}
+		
+		static function getAll()
+		{
+			$returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
+			$users = array();
+			foreach($returned_users as $user)
+			{
+				$new_user_name = $user['user_name'];
+				$new_password = $user['password'];
+				$new_longitude = $user['lng'];
+				$new_latitude = $user['lat'];
+				$new_signed_in = $user['signed_in'];
+				$new_id = $user['id'];
+				
+				$new_user = new User($new_user_name, $new_password, $new_longitude, $new_latitude, $new_signed_in, $new_id);
+				array_push($users, $new_user);
+			}
+			return $users;
+		}
+		
+		static function deleteAll()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM users;");
+		}
 	}
 ?>
