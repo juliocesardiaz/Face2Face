@@ -234,8 +234,49 @@
           //Assert
           $this->assertEquals([], $result);
         }
-        //
-        // function testUpdateName()
+
+        function testUpdateName()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
+
+          $new_place_name = "Park Lane Park";
+
+          //Act
+          $test_place->updatePlaceName($new_place_name);
+
+          //Assert
+          $this->assertEquals($test_place->getPlaceName(), $new_place_name);
+
+        }
+
+        function testUpdateAddress()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
+
+          $new_address = "NW West Ave";
+
+          //Act
+          $test_place->updateAddress($new_address);
+
+          //Assert
+          $this->assertEquals($test_place->getAddress(), $new_address);
+
+        }
+        // function testUpdateLocation()
         // {
         //   //Arrange
         //   $place_name = "Director Park";
@@ -246,19 +287,23 @@
         //   $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
         //   $test_place->save();
         //
-        //   $new_place_name = "Park Lane Park"
+        //
+        //   $new_latitude = -123.683411;
+        //   $new_longitude = 44.518272;
         //
         //   //Act
-        //   $test_place->updateName($new_place_name);
-        //   $test_place->getName();
+        //   $test_place->updateLocation($new_longitude, $new_latitude);
+        //   $new_location = array($test_place->getLongitude(),
+        //   $test_place->getLatitude());
         //
         //   //Assert
-        //   $this->assertEquals(, $result);
+        //   $this->assertEquals($new_location ,($new_longitude, $new_latitude));
         //
         // }
-        // function testUpdateAddress
-        // function testUpdateLocation
         // function testUpdateAll
+        // {
+        //
+        // }
 
     }
 
