@@ -7,7 +7,7 @@
 
     require_once "src/Place.php";
 
-    $server = 'mysql:host=localhost;dbname=face_to_face';
+    $server = 'mysql:host=localhost;dbname=face_to_face_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -66,7 +66,7 @@
           $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
 
           //Act
-          $result = $test_place->setAddress($address);
+          $result = $test_place->getAddress($address);
 
           //Assert
           $this->assertEquals("SW Park Ave", $result);
