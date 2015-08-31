@@ -182,11 +182,58 @@
           $this->assertEquals($id, $result);
 
         }
+        function testSave()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
 
+          //Act
+          $result = Place::getAll();
 
+          //Assert
+          $this->assertEquals($test_place, $result[0]);
+        }
+        function testGetAll()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
 
+          //Act
+          $result = Place::getAll();
 
+          //Assert
+          $this->assertEquals($test_place, $result[0]);
+        }
+        function testDeleteAll()
+        {
+          //Arrange
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place->save();
 
+          //Act
+          $test_place->deleteAll();
+          $result = Place::getAll();
+
+          //Assert
+          $this->assertEquals([], $result);
+        }
 
     }
 
