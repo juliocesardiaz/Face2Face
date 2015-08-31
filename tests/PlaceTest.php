@@ -66,7 +66,7 @@
           $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
 
           //Act
-          $result = $test_place->setAddress();
+          $result = $test_place->setAddress($address);
 
           //Assert
           $this->assertEquals("SW Park Ave", $result);
@@ -234,6 +234,31 @@
           //Assert
           $this->assertEquals([], $result);
         }
+        //
+        // function testUpdateName()
+        // {
+        //   //Arrange
+        //   $place_name = "Director Park";
+        //   $address = "SW Park Ave";
+        //   $longitude = 45.518672;
+        //   $latitude = -122.681211;
+        //   $id = 1;
+        //   $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+        //   $test_place->save();
+        //
+        //   $new_place_name = "Park Lane Park"
+        //
+        //   //Act
+        //   $test_place->updateName($new_place_name);
+        //   $test_place->getName();
+        //
+        //   //Assert
+        //   $this->assertEquals(, $result);
+        //
+        // }
+        // function testUpdateAddress
+        // function testUpdateLocation
+        // function testUpdateAll
 
     }
 
