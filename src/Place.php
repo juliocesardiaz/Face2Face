@@ -32,7 +32,7 @@
         }
         function getAddress()
         {
-            return $this->_address;
+            return $this->address;
         }
 
         function setLongitude ($new_longitude)
@@ -49,7 +49,7 @@
         }
         function getLatitude()
         {
-            return $this->_latitude;
+            return $this->latitude;
         }
 
         function getId()
