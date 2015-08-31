@@ -6,7 +6,7 @@
 
 ## Description
 
-The idea of Face2Face is initiated by Logan Wu with the goal to help people spend more meaningful time interacting with strangers in person instead of virtual spaces online. It is designed to function as a bridge to connect people in the hope of generating friendships and other relationships. 
+The idea of **Face2Face** is initiated by Logan Wu with the goal to help people spend more real  time interacting with strangers in person face to face instead of in virtual spaces online. It is designed to function as a bridge to connect people in the hope of generating friendships and other meaningful relationships. 
 
 ## Setup
 * Clone the project using the link provided on Github.
