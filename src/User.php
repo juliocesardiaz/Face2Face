@@ -83,7 +83,7 @@
 		
 		function setId($new_id)
 		{
-			$this->id = $id;
+			$this->id = $new_id;
 		}
 		
 		function getId()
