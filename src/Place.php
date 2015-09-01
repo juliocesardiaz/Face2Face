@@ -37,7 +37,7 @@
 
         function setLongitude ($new_longitude)
         {
-            $this->longitude = (string) $new_longitude;
+            $this->longitude = $new_longitude;
         }
         function getLongitude()
         {
@@ -45,7 +45,7 @@
         }
         function setLatitude ($new_latitude)
         {
-            $this->latitude = (string) $new_latitude;
+            $this->latitude = $new_latitude;
         }
         function getLatitude()
         {

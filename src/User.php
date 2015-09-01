@@ -83,7 +83,12 @@
 
 		function save()
 		{
-			$GLOBALS['DB']->exec("INSERT INTO users (user_name, password, longitude, latitude, signed_in) VALUES ('{$this->getUserName()}', '{$this->getPassword()}', {$this->getLongitude()}, {$this->getLatitude()}, {$this->getSignedIn()});");
+			$GLOBALS['DB']->exec("INSERT INTO users (user_name, password, longitude, latitude, signed_in)
+				VALUES ('{$this->getUserName()}',
+						'{$this->getPassword()}',
+						{$this->getLongitude()},
+						{$this->getLatitude()},
+						{$this->getSignedIn()});");
 			$this->setId($GLOBALS['DB']->lastInsertId());
 		}
 
@@ -134,8 +139,8 @@
 			{
 				$new_user_name = $user['user_name'];
 				$new_password = $user['password'];
-				$new_longitude = $user['lng'];
-				$new_latitude = $user['lat'];
+				$new_longitude = $user['longitude'];
+				$new_latitude = $user['latitude'];
 				$new_signed_in = $user['signed_in'];
 				$new_id = $user['id'];
 
