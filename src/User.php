@@ -12,7 +12,13 @@
 		function __constuct($user_name, $password, $longitude, $latitude, $signed_in, $id = null)
 		{
 			$this->user_name = $user_name;
-			$this->password = $password;
+			try{
+				$passwordHash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+				if($passwordHash = false) {
+					throw new Exception('Password hash failed');
+				}
+				$this->password = $passwordHash;
+			}
 			$this->longitude = $longitude;
 			$this->latitude = $latitude;
 			$this->signed_in = $signed_in;
@@ -31,7 +37,13 @@
 		
 		function setPassword($new_password)
 		{
-			$this->password = $new_password;
+			try{
+				$passwordHash = password_hash($new_password, PASSWORD_DEFAULT, ['cost' => 12]);
+				if($passwordHash = false) {
+					throw new Exception('Password hash failed');
+				}
+				$this->password = $passwordHash;
+			}
 		}
 		
 		function getPassword()
@@ -81,14 +93,14 @@
 		
 		function save()
 		{
-			$GLOBALS['DB']->exec("INSERT INTO users (user_name, password, lng, lat, signed_in) VALUES ('{$this->getUserName()}', '{$this->getPassword()}', {$this->getLongitude()}, {$this->getLatitude()}, {$this->getSignedIn()});");
+			$GLOBALS['DB']->exec("INSERT INTO users (user_name, password, longitude, latitude, signed_in) VALUES ('{$this->getUserName()}', '{$this->getPassword()}', {$this->getLongitude()}, {$this->getLatitude()}, {$this->getSignedIn()});");
 			$this->setId($GLOBALS['DB']->lastInsertId());
 		}
 		
 		function updateLocation($new_longitude, $new_latitude)
 		{
-			$GLOBALS['DB']->exec("UPDATE users SET lng = {$new_longitude} WHERE id = {$this->getId()};");
-			$GLOBALS['DB']->exec("UPDATE users SET lat = {$new_latitude} WHERE id = {$this->getId()};");
+			$GLOBALS['DB']->exec("UPDATE users SET longitude = {$new_longitude} WHERE id = {$this->getId()};");
+			$GLOBALS['DB']->exec("UPDATE users SET latitude = {$new_latitude} WHERE id = {$this->getId()};");
 			$this->setLongitude($new_longitude);
 			$this->setLatitude($new_latitude);
 		}
@@ -148,6 +160,34 @@
 			$GLOBALS['DB']->exec("DELETE FROM users;");
 		}
 		
+		static function find($search_id)
+		{
+			$found_user = null;
+			$users = User::getAll();
+			foreach($users as $user) {
+				$user_id = $user->getId();
+				if($user_id == $search_id) {
+					$found_user = $user;
+				}
+			}
+			return $found_user;
+		}
+		static function findByUserName($user_name)
+		{
+			$query = $GLOBALS['DB']->query("SELECT * FROM users WHERE user_name = '{$user_name}';");
+			
+			$found_user_name = $query['user_name'];
+			$found_password = $query['password'];
+			$found_lng = $query['longitude'];
+			$found_lat = $query['latitude'];
+			$found_signedin = $query['signed_in'];
+			$found_id = $query['id'];
+			
+			$found_user = new User($found_user_name, $found_password, $found_lng, $found_lat, $found_signedin, $found_id);
+			
+			return $found_user;
+		}
+		
 		function distanceBetweenUsers($user_two)
 		{
 			$radius_of_earth = 6371000; //in meters
@@ -178,6 +218,18 @@
 				}
 			}
 			return $users_near;
+		}
+		
+		static function LogIn($user_name, $user_password)
+		{
+			$user = User::findByUserName($user_name);
+			try {
+				if(password_verify($user_password, $user->getPassword()) === false) {
+					throw new Exception('Invalid password');
+				} else {
+					$user->updateSignedIn(true);
+				}
+			}
 		}
 	}
 ?>
