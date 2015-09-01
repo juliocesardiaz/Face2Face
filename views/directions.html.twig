@@ -46,6 +46,16 @@
 
         navigator.geolocation.getCurrentPosition(success, error);
     }
+
+    function initialize() {
+        var mapProp = {
+            center:new google.maps.LatLng(45.523375,-122.676201),
+            zoom:17,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
     </head>
@@ -57,6 +67,8 @@
             </h1>
             <p><button onclick="geoFindMe()" class="btn btn-default">Show my location</button></p>
 <div id="out"></div>
+            <div id="googleMap" style="width:500px;height:380px;"></div>
+
 
             </ul>
         </div>
