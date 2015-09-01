@@ -210,7 +210,8 @@
 			foreach($users as $user) {
 				if($user->getId() != $this->getId()) {
 					$distance = $this->distanceBetweenUsers($user);
-					if($distance <= 5000) {
+					$user_online = $user->getSignedIn();
+					if(($distance <= 5000) && ($user_online == true)) {
 						array_push($users_near, $user);
 					}
 				}
@@ -218,15 +219,20 @@
 			return $users_near;
 		}
 
-		static function LogIn($user_name, $user_password)
+		static function logIn($user_name, $user_password)
 		{
 			$user = User::findByUserName($user_name);
 			if(password_verify($user_password, $user->getPassword()) === false) {
 				return "Wrong Password";
 			} else {
-				$user->updateSignedIn(true);
+				$user->updateSignedIn(1);
 				return $user;
 			}
+		}
+		
+		function logOut()
+		{
+			$this->updateSignedIn(0);
 		}
 	}
 ?>
