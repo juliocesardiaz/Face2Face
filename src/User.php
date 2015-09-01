@@ -147,5 +147,36 @@
 		{
 			$GLOBALS['DB']->exec("DELETE FROM users;");
 		}
+		
+		function distanceBetweenUsers($user_two)
+		{
+			$radius_of_earth = 6371000; //in meters
+			$user_one_lat = deg2rad($this->getLatitude());
+			$user_one_lng = deg2rad($this->getLongitude());
+			$user_two_lat = deg2rad($user_two->getLatitude());
+			$user_two_lng = deg2rad($user_two->getLongitude());
+			
+			$difference_lat = $user_two_lat - $user_one_lat;
+			$difference_lng = $user_two_lng - $user_one_lng;
+			
+			$a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($user_one_lat) * cos($user_two_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
+			$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+			$distance_between_two_points = $radius_of_earth * $c;
+			
+			return $distance_between_two_points;
+		}
+		
+		function findUserNear()
+		{
+			$users = User::getAll();
+			$users_near = array();
+			
+			foreach($users as $user) {
+				$distance = $this->distanceBetweenUsers($user);
+				if($distance <= 5000) {
+					array_push($users_near, $user);
+				}
+			}
+		}
 	}
 ?>
