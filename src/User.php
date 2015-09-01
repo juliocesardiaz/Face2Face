@@ -177,6 +177,7 @@
 					array_push($users_near, $user);
 				}
 			}
+			return $users_near;
 		}
 	}
 ?>
