@@ -217,6 +217,7 @@
 				return "Wrong Password";
 			} else {
 				$user->updateSignedIn(true);
+				return $user;
 			}
 		}
 	}
