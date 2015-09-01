@@ -139,9 +139,9 @@
 			{
 				$new_user_name = $user['user_name'];
 				$new_password = $user['password'];
-				$new_longitude = $user['longitude'];
-				$new_latitude = $user['latitude'];
-				$new_signed_in = $user['signed_in'];
+				$new_longitude = (float) $user['longitude'];
+				$new_latitude = (float) $user['latitude'];
+				$new_signed_in = (int) $user['signed_in'];
 				$new_id = $user['id'];
 
 				$new_user = new User($new_user_name, $new_password, $new_longitude, $new_latitude, $new_signed_in, $new_id);
@@ -171,15 +171,15 @@
 		{
 			$query = $GLOBALS['DB']->query("SELECT * FROM users WHERE user_name = '{$user_name}';");
 
-			$found_user_name = $query['user_name'];
-			$found_password = $query['password'];
-			$found_lng = $query['longitude'];
-			$found_lat = $query['latitude'];
-			$found_signedin = $query['signed_in'];
-			$found_id = $query['id'];
-
-			$found_user = new User($found_user_name, $found_password, $found_lng, $found_lat, $found_signedin, $found_id);
-
+			foreach($query as $user) {
+				$found_user_name = $user['user_name'];
+				$found_password = $user['password'];
+				$found_lng = $user['longitude'];
+				$found_lat = $user['latitude'];
+				$found_signedin = $user['signed_in'];
+				$found_id = $user['id'];
+				$found_user = new User($found_user_name, $found_password, $found_lng, $found_lat, $found_signedin, $found_id);
+			}
 			return $found_user;
 		}
 

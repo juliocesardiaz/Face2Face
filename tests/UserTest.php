@@ -204,6 +204,25 @@
             $this->assertEquals($test_user, $result[0]);
         }
 
+        function test_LogIn()
+        {
+            //Arrange
+            $user_name = "Nathan";
+            $password = "xxx60606";
+            $longitude = 45.516231;
+            $latitude = -122.682519;
+            $signed_in = 1;
+            $id = 1;
+            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+            $test_user->save();
+
+            //Act
+            $result = User::LogIn("Nathan", "xxx60606");
+
+            //Assert
+            $this->assertEquals($test_user, $result);
+        }
+
     }
 
     ?>
