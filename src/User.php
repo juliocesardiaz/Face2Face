@@ -166,7 +166,7 @@
 			return $distance_between_two_points;
 		}
 		
-		function findUserNear()
+		function findUsersNear()
 		{
 			$users = User::getAll();
 			$users_near = array();
