@@ -1,6 +1,6 @@
 # Face2Face
 
-##### Geo App for users to look for people near them and instantly meet up. (8/31/15 – 9/4/15)
+##### Geolocation App for users to look for people near them and instantly meet up. (8/31/15 – 9/4/15)
 
 #### Ben Spenard, Julio Diaz, Logan Wu & Nathan Young
 

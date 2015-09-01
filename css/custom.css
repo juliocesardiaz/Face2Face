@@ -1,5 +1,5 @@
 .container {
-    width: 50%;
+    width: 560px;
 }
 
 h1 {
@@ -7,5 +7,15 @@ h1 {
 }
 
 .right {
-    display:inline;
+    display: inline;
+    float: right;
+
+}
+
+.right button.last {
+    margin-right: 0;
+}
+
+.clear {
+    clear: both;
 }
