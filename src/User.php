@@ -32,8 +32,7 @@
 
 		function setPassword($new_password)
 		{
-			$passwordHash = password_hash($new_password, PASSWORD_DEFAULT, ['cost' => 12]);
-			$this->password = $passwordHash;
+			$this->password = $new_password;
 		}
 
 		function getPassword()
@@ -145,6 +144,7 @@
 				$new_id = $user['id'];
 
 				$new_user = new User($new_user_name, $new_password, $new_longitude, $new_latitude, $new_signed_in, $new_id);
+				$new_user->setPassword($new_password);
 				array_push($users, $new_user);
 			}
 			return $users;
@@ -174,11 +174,12 @@
 			foreach($query as $user) {
 				$found_user_name = $user['user_name'];
 				$found_password = $user['password'];
-				$found_lng = $user['longitude'];
-				$found_lat = $user['latitude'];
-				$found_signedin = $user['signed_in'];
+				$found_lng = (float) $user['longitude'];
+				$found_lat = (float) $user['latitude'];
+				$found_signedin = (int) $user['signed_in'];
 				$found_id = $user['id'];
 				$found_user = new User($found_user_name, $found_password, $found_lng, $found_lat, $found_signedin, $found_id);
+				$found_user->setPassword($found_password);
 			}
 			return $found_user;
 		}
@@ -207,9 +208,11 @@
 			$users_near = array();
 
 			foreach($users as $user) {
-				$distance = $this->distanceBetweenUsers($user);
-				if($distance <= 5000) {
-					array_push($users_near, $user);
+				if($user->getId() != $this->getId()) {
+					$distance = $this->distanceBetweenUsers($user);
+					if($distance <= 5000) {
+						array_push($users_near, $user);
+					}
 				}
 			}
 			return $users_near;

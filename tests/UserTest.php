@@ -222,6 +222,43 @@
             //Assert
             $this->assertEquals($test_user, $result);
         }
+        
+        function testFindNear()
+        {
+            //Arrange
+            $user_name = "Nathan";
+            $password = "xxx60606";
+            $latitude = 45.520969;
+            $longitude = -122.679953;
+            $signed_in = 1;
+            $id = 1;
+            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+            $test_user->save();
+            
+            $user_name2 = "John";
+            $password2 = "xxx";
+            $latitude2 = 45.515852;
+            $longitude2 = -122.674644;
+            $signed_in2 = 1;
+            $id2 = 1;
+            $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+            $test_user2->save();
+            
+            $user_name3 = "Jim";
+            $password3 = "xxxxxx";
+            $latitude3 = 47.603734;
+            $longitude3 = -122.333813;
+            $signed_in3 = 1;
+            $id3 = 1;
+            $test_user3 = new User($user_name3, $password3, $longitude3, $latitude3, $signed_in3, $id3);
+            $test_user3->save();
+
+            //Act
+            $result = $test_user->findUsersNear();
+
+            //Assert
+            $this->assertEquals([$test_user2], $result);
+        }
 
     }
 
