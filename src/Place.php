@@ -144,5 +144,67 @@
             $GLOBALS['DB']->exec("DELETE FROM places WHERE id = {$this->getId()};");
             //$GLOBALS['DB']->exec("DELETE FROM places_users WHERE place_id = {$this->getId()};");
         }
+
+        static function generateLocation()
+        {
+            $returned_places = $GLOBALS['DB']->query("SELECT * FROM places;");
+            $places = array();
+            foreach($returned_places as $place) {
+                $place_name = $place['place_name'];
+                $address = $place['address'];
+                $longitude = $place['longitude'];
+                $latitude = $place['latitude'];
+                $id = $place['id'];
+                $new_place = new Place($place_name, $address, $longitude, $latitude, $id);
+                array_push($places, $new_place);
+            }
+
+            // generates & returns a random place object
+            $number_of_places = count($places);
+            $random_number = rand(0, $number_of_places - 1);
+            $random_location = $places[$random_number];
+            return $random_location;
+        }
+
+        function distanceFrom($user)
+        {
+            $radius_of_earth = 6371000; //in meters
+            $location_lat = deg2rad($this->getLatitude());
+            $location_lng = deg2rad($this->getLongitude());
+            $user_lat = deg2rad($user->getLatitude());
+            $user_lng = deg2rad($user->getLongitude());
+
+            $difference_lat = $user_lat - $location_lat;
+            $difference_lng = $user_lng - $location_lng;
+
+            $a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat) * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $distance_between_two_points = $radius_of_earth * $c;
+
+            return $distance_between_two_points;
+        }
+
+        function verifyLocation($user1, $user2)
+        {
+            $distance_from_user1 = $this->distanceFrom($user1);
+            $distance_from_user2 = $this->distanceFrom($user2);
+
+            if(($distance_from_user1 <= 5000) && ($distance_from_user2 <= 5000)) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        static function setMeetupLocation($user1, $user2)
+        {
+            $temp_location = Place::generateLocation();
+            if ($temp_location->verifyLocation($user1, $user2)) {
+                return $temp_location;
+            }   else {
+                Place::setMeetupLocation($user1, $user2);
+            }
+        }
     }
  ?>

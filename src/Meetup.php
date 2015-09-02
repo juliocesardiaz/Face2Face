@@ -191,7 +191,7 @@
         {
             $GLOBALS['DB']->exec("UPDATE meetups SET location_id =
                 '{$new_location_id}' WHERE id = {$this->getId()};");
-            $this->setLocationId($new_location_id);
+            $this->setLocation_Id($new_location_id);
         }
 
         function updateConfirm_meet_usr1($new_confirm_meet_usr1)
@@ -219,8 +219,9 @@
                 $this->updateLocationId($new_location_id);
                 $this->updateConfirm_meet_usr1($new_confirm_meet_usr1);
                 $this->updateConfirm_meet_usr2($new_confirm_meet_usr2);
-
             }
+
+
     }
 
 
