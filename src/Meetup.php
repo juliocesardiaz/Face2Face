@@ -12,7 +12,7 @@
         private $id;
 
         function __construct($user1_id, $user2_id, $user1_confirm,
-            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr1,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2,
             $id = null)
         {
             $this->user1_id = $user1_id;
