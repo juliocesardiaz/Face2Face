@@ -16,6 +16,10 @@
     </head>
     <body>
         <div class="container">
+            <form action="/XXX" method="post">
+                <button type="submit" class="btn btn-default btn-sm inline pull-right">Log off</button>
+            </form>
+
             <h1>Face2Face</h1>
 
             <!-- list of all users nearby -->
@@ -34,7 +38,7 @@
                     </ul>
                   {% endfor %}
             {% else %}
-                <h2><small>There's no users yet. Please be patient!</small></h2>
+                <h2><small>There's no users yet.</small></h2>
             {% endif %}
 
             <hr noshade size=4 width=100% align=left>
@@ -56,9 +60,7 @@
                 <h2><small>There's no requests yet.</small></h2>
             {% endif %}
 
-            <form action="/XXX" method="post">
-                <button type="submit" class="btn btn-default btn-sm btn-fill">Log off</button>
-            </form>
+
         </div>
     </body>
 </html>

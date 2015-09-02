@@ -16,29 +16,51 @@
     </head>
     <body>
         <div class="container">
-            <div class="clearfix">
-                <button href="/" class="btn btn-danger inline pull-right" id="signup">Sign up</button>
-                <form action="/Users/Guest/Desktop/Face2Face/views/login.html.twig" method="post">
-                    <button href="/login" class="btn btn-info inline pull-right">Log in</button>
-                </form>
-            </div>
-
-            <h1>Face2Face<br>
-                <small>Instantly meet up with people near you.</small>
-            </h1>
-
             <form action="/XXX" method="post">
-                <div class="form-group">
-                    <ul class="list-group">
-                        <li class="list-group-item"><input id="username" name="username" type="username" class="form-control" placeholder="Username"></li>
+                <button type="submit" class="btn btn-default btn-sm inline pull-right">Log off</button>
+            </form>
 
-                        <li class="list-group-item"><input id="password" name="password" type="password" class="form-control" placeholder="Password"></li>
-                        <li class="list-group-item"><input id="retype-password" name="retype-retypepassword" type="retype-password" class="form-control" placeholder="Retype password"></li>
+            <h1>Face2Face</h1>
+
+            <!-- list of all users nearby -->
+            {% if users is not empty %}
+                <h2><small>Users nearby you who want to meet up:</small></h2>
+                  {% for user in users %}
+                    <ul>
+                          <li>{{ user.getName }}
+                              <a href="/users/{{ user.getId }}"></a>
+                              <ul>
+                                  <li>Photo: {{ user.getPhoto }}</li>
+                                  <button type="submit" class="btn btn-info btn-sm">Request meet up</button>
+                                  <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
+                              </ul>
+                          </li>
                     </ul>
-                </div>
-                <button type="submit" class="btn btn-danger btn-fill">Sign up</button>
-                </form>
-            </ul>
+                  {% endfor %}
+            {% else %}
+                <h2><small>There's no users yet.</small></h2>
+            {% endif %}
+
+            <hr noshade size=4 width=100% align=left>
+
+            <!-- list of all requests -->
+            {% if requests is not empty %}
+                <h2><small>Requests you received to meet up:</small></h2>
+                  {% for request in requests %}
+                      <ul>
+                          <li>{{ user.getName }}
+                              <a href="/users/{{ user.getId }}"></a>
+                              <ul>
+                                  <li>Photo: {{ user.getPhoto }}</li>
+                              </ul>
+                          </li>
+                      </ul>
+                  {% endfor %}
+            {% else %}
+                <h2><small>There's no requests yet.</small></h2>
+            {% endif %}
+
+
         </div>
     </body>
 </html>

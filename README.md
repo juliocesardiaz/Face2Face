@@ -12,12 +12,12 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 * Mobile responsive web application.
 * Allows people to create user profiles and log in.
 * Allows users to see other users nearby and send them requests.
-* Suggested close-by place for users to meet up conveniently.
+* Suggests close-by location for users to meet up conveniently.
 * Hashed user password in the database for added security.
 
 ### Future functions to be added
 * Allows group meetups in addition to two-person meetups.
-* Adds rating and commenting system for users to review one other.
+* Adds rating and commenting system for users to review one another.
 * Incorporates Google Map APIs to show users clear directions on where to meet.
 
 ## Setup
