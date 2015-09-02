@@ -8,6 +8,16 @@
 
 The idea of **Face2Face** is initiated by Logan Wu with the goal to help people spend more real  time interacting with strangers in person face to face instead of in virtual spaces online. It is designed to function as a bridge to connect people for generating friendships and other meaningful relationships.
 
+### App Characteristics
+* Allows users to see other users nearby and send them requests.
+* Suggested close-by place for users to meet up immediately.
+* Hashed user password in the database for security.
+
+### Future Functions to be Added
+* Allows group meetups in addition to two-person meetups.
+* Adds rating and commenting system which allows users to review each person they meet up with.
+* Incorporates Google Map to show users clear directions on where to meet.
+
 ## Setup
 * Clone the project using the link provided on Github.
 * Run composer install in Terminal from the project root folder.

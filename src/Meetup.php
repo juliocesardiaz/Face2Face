@@ -102,16 +102,16 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO meetups (user1_id, user1_id,
-                user1_confirm, user1_confirm, location_id, confirm_meet_usr1,
-                confirm_meet_usr1) VALUES (
+            $GLOBALS['DB']->exec("INSERT INTO meetups (user1_id, user2_id,
+                user1_confirm, user2_confirm, location_id, confirm_meet_usr1,
+                confirm_meet_usr2) VALUES (
                     {$this->getUser1_Id()},
                     {$this->getUser2_Id()},
                     {$this->getUser1_Confirm()},
                     {$this->getUser2_Confirm()},
                     {$this->getLocation_Id()},
                     {$this->getConfirm_meet_usr1()},
-                    {$this->getConfirm_meet_usr2()},)");
+                    {$this->getConfirm_meet_usr2()});");
                     $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -129,7 +129,7 @@
                 $confirm_meet_usr2 = $meetup['confirm_meet_usr2'];
                 $id = $meetup['id'];
                 $new_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
-                    $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr1,
+                    $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2,
                     $id);
                 array_push($meetups, $new_meetup);
             }
@@ -219,8 +219,9 @@
                 $this->updateLocationId($new_location_id);
                 $this->updateConfirm_meet_usr1($new_confirm_meet_usr1);
                 $this->updateConfirm_meet_usr2($new_confirm_meet_usr2);
-
             }
+
+
     }
 
 

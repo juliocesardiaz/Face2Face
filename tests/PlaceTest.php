@@ -7,7 +7,7 @@
 
     require_once "src/Place.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=face_to_face_test';
+    $server = 'mysql:host=localhost;dbname=face_to_face_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -199,7 +199,7 @@
           //Assert
           $this->assertEquals($test_place, $result[0]);
         }
-        function testGetAll()
+        function testgetAll()
         {
           //Arrange
           $place_name = "Director Park";
@@ -228,7 +228,7 @@
           $test_place->save();
 
           //Act
-          $test_place->deleteAll();
+          Place::deleteAll();
           $result = Place::getAll();
 
           //Assert

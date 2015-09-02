@@ -19,7 +19,22 @@
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
-    //homepage
+    //home page (sign up page)
     $app->get("/", function() use($app) {
         return $app['twig']->render('home.html.twig');
     });
+
+    //log in page
+
+    //list of users page
+
+    //waiting request respond page
+
+    //confirmation page
+
+    //confirmed page
+
+    //directions page
+
+    return $app;
+?>
