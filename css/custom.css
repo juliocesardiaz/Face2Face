@@ -7,6 +7,10 @@ h1 {
     letter-spacing: -2px;
 }
 
+h1 small {
+    letter-spacing: 0px;
+}
+
 button {
     transition-duration: 0.3s;
 }
@@ -37,6 +41,15 @@ button {
         font-size: 36px;
         position: center;
     }
+
+    .btn {
+        width:100% !important;
+    }
+
+    #signup {
+        display: none;
+    }
+
 
     #googleMap {
         width: 360px;

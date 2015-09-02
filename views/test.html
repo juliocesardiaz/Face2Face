@@ -16,21 +16,29 @@
     </head>
     <body>
         <div class="container">
-            <button href="/" class="btn btn-danger inline pull-right">Sign up</button>
+            <div class="clearfix">
+                <button href="/" class="btn btn-danger inline pull-right" id="signup">Sign up</button>
+                <form action="/Users/Guest/Desktop/Face2Face/views/login.html.twig" method="post">
+                    <button href="/login" class="btn btn-info inline pull-right">Log in</button>
+                </form>
+            </div>
 
-            <h1>Face2Face</h1>
+            <h1>Face2Face<br>
+                <small>Instantly meet up with people near you.</small>
+            </h1>
 
             <form action="/XXX" method="post">
-                <ul class="list-group">
-                    <div class="form-group">
+                <div class="form-group">
+                    <ul class="list-group">
                         <li class="list-group-item"><input id="username" name="username" type="username" class="form-control" placeholder="Username"></li>
 
                         <li class="list-group-item"><input id="password" name="password" type="password" class="form-control" placeholder="Password"></li>
-                    </div>
-                </ul>
-            <button type="submit" class="btn btn-info btn-fill">Log in</button>
-            </form>
-
+                        <li class="list-group-item"><input id="retype-password" name="retype-retypepassword" type="retype-password" class="form-control" placeholder="Retype password"></li>
+                    </ul>
+                </div>
+                <button type="submit" class="btn btn-danger btn-fill">Sign up</button>
+                </form>
+            </ul>
         </div>
     </body>
 </html>
