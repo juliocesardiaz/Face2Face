@@ -265,7 +265,7 @@
 		
 		function confirmMeetupRequest($user_id)
 		{
-			$GLOBALS['DB']->exec("UPDATE meetups SET user2_confrim = {true} WHERE user1_id = {$user_id};");
+			$GLOBALS['DB']->exec("UPDATE meetups SET user2_confrim = {true} WHERE user1_id = {$user_id} and user2_id = {$this->getId()};");
 		}
 	}
 ?>
