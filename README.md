@@ -10,12 +10,12 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 
 ### App Characteristics
 * Allows users to see other users nearby and send them requests.
-* Suggested close-by place for users to meet up immediately.
-* Hashed user password in the database for security.
+* Suggested close-by place for users to meet up conveniently.
+* Hashed user password in the database for added security.
 
 ### Future Functions to be Added
 * Allows group meetups in addition to two-person meetups.
-* Adds rating and commenting system which allows users to review each person they meet up with.
+* Adds rating and commenting system for users to review each person they meet up with.
 * Incorporates Google Map to show users clear directions on where to meet.
 
 ## Setup
@@ -26,7 +26,7 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 
 ## Technologies Used
 
-PHP, PHPUnit, Silex, Twig, HTML, CSS, Bootstrap, and MySQL
+PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, Bootstrap, MySQL, and Google Map API
 
 ### Legal
 
