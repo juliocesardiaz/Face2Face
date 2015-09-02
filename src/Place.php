@@ -147,19 +147,7 @@
 
         static function generateLocation()
         {
-            $returned_places = $GLOBALS['DB']->query("SELECT * FROM places;");
-            $places = array();
-            foreach($returned_places as $place) {
-                $place_name = $place['place_name'];
-                $address = $place['address'];
-                $longitude = $place['longitude'];
-                $latitude = $place['latitude'];
-                $id = $place['id'];
-                $new_place = new Place($place_name, $address, $longitude, $latitude, $id);
-                array_push($places, $new_place);
-            }
-
-            // generates & returns a random place object
+            $places = Place::getAll();
             $number_of_places = count($places);
             $random_number = rand(0, $number_of_places - 1);
             $random_location = $places[$random_number];
@@ -194,7 +182,6 @@
             } else {
                 return false;
             }
-
         }
 
         static function setMeetupLocation($user1, $user2)
