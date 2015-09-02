@@ -38,7 +38,6 @@
 
             //Assert
             $this->assertEquals($user_name, $result);
-
         }
 
         function test_getUserName()
@@ -309,12 +308,39 @@
 
             //Act
             $test_user_online = User::logIn("Nathan", "xxx60606");
-
             $test_user_online->logOut();
             $result = User::getAll();
 
             //Assert
             $this->assertEquals(0, $result[0]->getSignedIn());
+        }
+
+        function test_findByUserName()
+        {
+            //Arrange
+            $user_name = "Nathan";
+            $password = "xxx60606";
+            $latitude = 45.520969;
+            $longitude = -122.679953;
+            $signed_in = 1;
+            $id = 1;
+            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+            $test_user->save();
+
+            $user_name2 = "John";
+            $password2 = "xxx";
+            $latitude2 = 45.515852;
+            $longitude2 = -122.674644;
+            $signed_in2 = 1;
+            $id2 = 1;
+            $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+            $test_user2->save();
+
+            //Act
+            $result = User::findByUserName("John");
+
+            //Assert
+            $this->assertEquals($test_user2, $result);
         }
     }
 
