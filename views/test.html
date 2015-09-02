@@ -16,10 +16,21 @@
     </head>
     <body>
         <div class="container">
+            <button href="/" class="btn btn-danger inline pull-right">Sign up</button>
+
             <h1>Face2Face</h1>
-                <div class="alert alert-warning" role="alert">
-                Sorry, {{ user2 }} is currently unable to meet up with you.
-                </div>
+
+            <form action="/XXX" method="post">
+                <ul class="list-group">
+                    <div class="form-group">
+                        <li class="list-group-item"><input id="username" name="username" type="username" class="form-control" placeholder="Username"></li>
+
+                        <li class="list-group-item"><input id="password" name="password" type="password" class="form-control" placeholder="Password"></li>
+                    </div>
+                </ul>
+            <button type="submit" class="btn btn-info btn-fill">Log in</button>
+            </form>
+
         </div>
     </body>
 </html>
