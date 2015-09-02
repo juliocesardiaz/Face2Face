@@ -12,7 +12,7 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class PlaceTest extends PHPUnit_Framework_TestCase
+    class MeetupTest extends PHPUnit_Framework_TestCase
     {
     //GET/SET TESTS
         function test_getId()
@@ -198,6 +198,88 @@
 
             //Assert
             $this->assertEquals($user2_confirm, $result);
+        }
+        function setConfirm_meet_usr1()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = null;
+            $location_id = null;
+            $confirm_meet_usr1 = true;
+            $confirm_meet_usr2 = null;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $test_meetup->setConfirm_meet_usr1($confirm_meet_usr1);
+            $result = $test_meetup->getConfirm_meet_usr1();
+
+            //Assert
+            $this->assertEquals($user1_confirm, $result);
+        }
+        function setLocation_Id()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = false;
+            $location_id = 12;
+            $confirm_meet_usr1 = null;
+            $confirm_meet_usr2 = null;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $test_meetup->setLocation_Id($location_id);
+            $result = $test_meetup->getLocation_Id();
+
+            //Assert
+            $this->assertEquals($location_id, $result);
+        }
+        function getConfirm_meet_usr1()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = null;
+            $location_id = null;
+            $confirm_meet_usr1 = true;
+            $confirm_meet_usr2 = null;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $result = $test_meetup->getConfirm_meet_usr1();
+
+            //Assert
+            $this->assertEquals($confirm_meet_usr1, $result);
+        }
+        function getLocation_Id()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = false;
+            $location_id = 12;
+            $confirm_meet_usr1 = null;
+            $confirm_meet_usr2 = null;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $result = $test_meetup->getLocation_Id();
+
+            //Assert
+            $this->assertEquals($location_id, $result);
         }
 
     }

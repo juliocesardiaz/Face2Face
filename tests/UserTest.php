@@ -8,7 +8,7 @@
     require_once "src/Place.php";
     require_once "src/User.php";
 
-    $server = 'mysql:host=localhost;dbname=face_to_face_test';
+    $server = 'mysql:host=localhost:8889;dbname=face_to_face_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -222,7 +222,7 @@
             //Assert
             $this->assertEquals($test_user, $result);
         }
-        
+
         function test_findUsersNear()
         {
             //Arrange
@@ -234,7 +234,7 @@
             $id = 1;
             $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
             $test_user->save();
-            
+
             $user_name2 = "John";
             $password2 = "xxx";
             $latitude2 = 45.515852;
@@ -243,7 +243,7 @@
             $id2 = 1;
             $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
             $test_user2->save();
-            
+
             $user_name3 = "Jim";
             $password3 = "xxxxxx";
             $latitude3 = 47.603734;
@@ -252,7 +252,7 @@
             $id3 = 1;
             $test_user3 = new User($user_name3, $password3, $longitude3, $latitude3, $signed_in3, $id3);
             $test_user3->save();
-            
+
             $user_name4 = "Jim";
             $password4 = "xxx";
             $latitude4 = 45.515852;
@@ -268,7 +268,7 @@
             //Assert
             $this->assertEquals([$test_user2], $result);
         }
-        
+
         function test_find()
         {
             //Arrange
@@ -280,7 +280,7 @@
             $id = 1;
             $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
             $test_user->save();
-            
+
             $user_name2 = "John";
             $password2 = "xxx";
             $latitude2 = 45.515852;
@@ -289,12 +289,12 @@
             $id2 = 1;
             $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
             $test_user2->save();
-            
+
             $result = User::find($test_user->getId());
-            
+
             $this->assertEquals($test_user, $result);
         }
-        
+
         function test_logOut()
         {
             //Arrange
@@ -309,7 +309,7 @@
 
             //Act
             $test_user_online = User::logIn("Nathan", "xxx60606");
-            
+
             $test_user_online->logOut();
             $result = User::getAll();
 
