@@ -35,7 +35,7 @@
             //Assert
             $this->assertEquals($id, $result);
         }
-        function setUser1_IdTest()
+        function test_setUser1_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -56,7 +56,7 @@
             //Assert
             $this->assertEquals($user1_id, $result);
         }
-        function getUser1_IdTest()
+        function test_getUser1_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -76,7 +76,7 @@
             //Assert
             $this->assertEquals($user1_id, $result);
         }
-        function setUser2_IdTest()
+        function test_setUser2_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -97,7 +97,7 @@
             //Assert
             $this->assertEquals($user1_id, $result);
         }
-        function getUser2_IdTest()
+        function test_getUser2_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -117,7 +117,7 @@
             //Assert
             $this->assertEquals($user2_id, $result);
         }
-        function setUser1_ConfirmTest()
+        function test_setUser1_Confirm()
         {
             //Arrange
             $user1_id = 1;
@@ -138,7 +138,7 @@
             //Assert
             $this->assertEquals($user1_confirm, $result);
         }
-        function setUser2_ConfirmTest()
+        function test_setUser2_Confirm()
         {
             //Arrange
             $user1_id = 1;
@@ -159,7 +159,7 @@
             //Assert
             $this->assertEquals($user2_confirm, $result);
         }
-        function getUser1_ConfirmTest()
+        function test_getUser1_Confirm()
         {
             //Arrange
             $user1_id = 1;
@@ -179,7 +179,7 @@
             //Assert
             $this->assertEquals($user1_confirm, $result);
         }
-        function getUser2_ConfirmTest()
+        function test_getUser2_Confirm()
         {
             //Arrange
             $user1_id = 1;
@@ -199,7 +199,7 @@
             //Assert
             $this->assertEquals($user2_confirm, $result);
         }
-        function setConfirm_meet_usr1()
+        function test_setConfirm_meet_usr1()
         {
             //Arrange
             $user1_id = 1;
@@ -218,9 +218,9 @@
             $result = $test_meetup->getConfirm_meet_usr1();
 
             //Assert
-            $this->assertEquals($user1_confirm, $result);
+            $this->assertEquals($confirm_meet_usr1, $result);
         }
-        function setLocation_Id()
+        function test_setLocation_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -241,7 +241,7 @@
             //Assert
             $this->assertEquals($location_id, $result);
         }
-        function getConfirm_meet_usr1()
+        function test_getConfirm_meet_usr1()
         {
             //Arrange
             $user1_id = 1;
@@ -261,7 +261,7 @@
             //Assert
             $this->assertEquals($confirm_meet_usr1, $result);
         }
-        function getLocation_Id()
+        function test_getLocation_Id()
         {
             //Arrange
             $user1_id = 1;
@@ -280,6 +280,47 @@
 
             //Assert
             $this->assertEquals($location_id, $result);
+        }
+        function test_setConfirm_meet_usr2()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = null;
+            $location_id = null;
+            $confirm_meet_usr1 = true;
+            $confirm_meet_usr2 = false;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $test_meetup->setConfirm_meet_usr2($confirm_meet_usr2);
+            $result = $test_meetup->getConfirm_meet_usr2();
+
+            //Assert
+            $this->assertEquals($confirm_meet_usr2, $result);
+        }
+        function test_getConfirm_meet_usr2()
+        {
+            //Arrange
+            $user1_id = 1;
+            $user2_id = 2;
+            $user1_confirm = true;
+            $user2_confirm = null;
+            $location_id = null;
+            $confirm_meet_usr1 = true;
+            $confirm_meet_usr2 = false;
+            $id = 1;
+            $test_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+            $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr2, $id);
+
+            //Act
+            $result = $test_meetup->getConfirm_meet_usr2();
+
+            //Assert
+            $this->assertEquals($confirm_meet_usr2, $result);
         }
 
     }
