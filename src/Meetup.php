@@ -114,6 +114,27 @@
                     {$this->getConfirm_meet_usr2()},)");
                     $this->id = $GLOBALS['DB']->lastInsertId();
         }
+
+        function getAll()
+        {
+            $returned_meetups = $GLOBALS['DB']->query("SELECT * FROM meetups;");
+            $meetups = array();
+            foreach($returned_meetups as $meetup) {
+                $user1_id = $meetup['user1_id'];
+                $user2_id = $meetup['user2_id'];
+                $user1_confirm = $meetup['user1_confirm'];
+                $user2_confirm = $meetup['user2_confirm'];
+                $location_id = $meetup['location_id'];
+                $confirm_meet_usr1 = $meetup['confirm_meet_usr1'];
+                $confirm_meet_usr2 = $meetup['confirm_meet_usr2'];
+                $id = $meetup['id'];
+                $new_meetup = new Meetup($user1_id, $user2_id, $user1_confirm,
+                    $user2_confirm, $location_id, $confirm_meet_usr1, $confirm_meet_usr1,
+                    $id);
+                array_push($meetups, $new_meetup);
+            }
+            return $meetups;
+        }
     }
 
 
