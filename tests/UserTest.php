@@ -8,7 +8,7 @@
     require_once "src/Place.php";
     require_once "src/User.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=face_to_face_test';
+    $server = 'mysql:host=localhost;dbname=face_to_face_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
