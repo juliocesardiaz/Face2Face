@@ -3,13 +3,17 @@
 }
 
 h1 {
-    align: center;
+    text-align: center;
+    letter-spacing: -2px;
+}
+
+button {
+    transition-duration: 0.3s;
 }
 
 .right {
     display: inline;
     float: right;
-
 }
 
 .right button.last {
@@ -32,6 +36,11 @@ h1 {
     h1 {
         font-size: 36px;
         position: center;
+    }
+
+    #googleMap {
+        width: 360px;
+        height: 200px;
     }
 
 }
