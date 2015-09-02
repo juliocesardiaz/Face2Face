@@ -291,5 +291,10 @@
 			$meet_location = new Place($location_name, $location_address, $location_longitude, $location_latitude, $location_id);
 			return $meet_location;
 		}
+		
+		function hasUserTwoConfirmed($user2_id)
+		{
+			$confirmation = $GLOBALS['DB']->query("SELECT confirm_user2 FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id};");
+		}
 	}
 ?>
