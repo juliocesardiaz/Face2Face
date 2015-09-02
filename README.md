@@ -15,7 +15,7 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 
 ### Future functions to be added
 * Allows group meetups in addition to two-person meetups.
-* Adds rating and commenting system for users to review each other.
+* Adds rating and commenting system for users to review one other.
 * Incorporates Google Map APIs to show users clear directions on where to meet.
 
 ## Setup
