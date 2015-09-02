@@ -219,8 +219,9 @@
                 $this->updateLocationId($new_location_id);
                 $this->updateConfirm_meet_usr1($new_confirm_meet_usr1);
                 $this->updateConfirm_meet_usr2($new_confirm_meet_usr2);
-
             }
+
+
     }
 
 

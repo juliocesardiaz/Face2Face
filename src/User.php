@@ -229,7 +229,7 @@
 				return $user;
 			}
 		}
-		
+
 		function logOut()
 		{
 			$this->updateSignedIn(0);
