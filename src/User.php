@@ -242,7 +242,7 @@
 		
 		function findMeetupRequests()
 		{
-			$requested_meetups = $GLOBALS['DB']->query("SELECT * FROM meetups WHERE user2_id = {$this->getId()} AND confirm_meet_usr1 = NULL;");
+			$requested_meetups = $GLOBALS['DB']->query("SELECT * FROM meetups WHERE user2_id = {$this->getId()} AND confirm_meet_usr1 IS NULL;");
 			$users_requesting = array();
 			
 			foreach($requested_meetups as $requested_meetup) {
@@ -280,7 +280,7 @@
 		
 		function getMeetUpLocation($user1_id, $user2_id)
 		{
-			$query = ("SELECT * FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user1_id} AND confirm_meet_usr1 = NULL;");
+			$query = ("SELECT * FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user1_id} AND confirm_meet_usr1 IS NULL;");
 			$meetup_location_id = $query[0]['location_id'];
 			$location_query = ("SELECT * FROM palces WHERE id = {$meetup_location_id};");
 			$location_name = $location_query[0]['place_name'];
@@ -294,7 +294,8 @@
 		
 		function hasUserTwoConfirmed($user2_id)
 		{
-			$confirmation = $GLOBALS['DB']->query("SELECT confirm_user2 FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id};");
+			$confirmation = $GLOBALS['DB']->query("SELECT user2_confirm FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+			
 		}
 	}
 ?>
