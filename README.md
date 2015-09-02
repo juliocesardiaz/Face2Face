@@ -9,6 +9,8 @@
 The idea of **Face2Face** is initiated by Logan Wu with the goal to help people spend more real  time interacting with strangers in person face to face instead of in virtual spaces online. It is designed to function as a bridge to connect people for generating friendships and other meaningful relationships.
 
 ### Key characteristics
+* Mobile responsive web application.
+* Allows people to create user profiles and log in.
 * Allows users to see other users nearby and send them requests.
 * Suggested close-by place for users to meet up conveniently.
 * Hashed user password in the database for added security.
