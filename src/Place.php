@@ -165,7 +165,8 @@
             $difference_lat = $user_lat - $location_lat;
             $difference_lng = $user_lng - $location_lng;
 
-            $a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat) * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
+            $a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat)
+             * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
             $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
             $distance_between_two_points = $radius_of_earth * $c;
 
