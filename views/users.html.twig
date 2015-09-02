@@ -8,33 +8,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- get-shit-done css -->
-    <link rel="stylesheet" type="text/css" href="css/get-shit-done.css">
+    <link rel="stylesheet" type="text/css" href="../css/get-shit-done.css">
 
     <!-- custom css -->
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
     </head>
     <body>
         <div class="container">
-
             <h1>Face2Face</h1>
 
+            <!-- list of all users nearby -->
             {% if users is not empty %}
-                <h2><small>Here are all the people near by who want to meet up:</small></h2>
+                <h2><small>Users nearby you who want to meet up:</small></h2>
                   {% for user in users %}
-                      <ul>
+                    <ul>
                           <li>{{ user.getName }}
                               <a href="/users/{{ user.getId }}"></a>
                               <ul>
-                                  <li>Description: {{ user.getDescription }}</li>
+                                  <li>Photo: {{ user.getPhoto }}</li>
+                                  <button type="submit" class="btn btn-info btn-sm">Request meet up</button>
+                                  <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
                               </ul>
                           </li>
-                      </ul>
+                    </ul>
                   {% endfor %}
             {% else %}
                 <h2><small>There's no users yet. Please be patient!</small></h2>
             {% endif %}
 
+            <hr noshade size=4 width=100% align=left>
+
+            <!-- list of all requests -->
+            {% if requests is not empty %}
+                <h2><small>Requests you received to meet up:</small></h2>
+                  {% for request in requests %}
+                      <ul>
+                          <li>{{ user.getName }}
+                              <a href="/users/{{ user.getId }}"></a>
+                              <ul>
+                                  <li>Photo: {{ user.getPhoto }}</li>
+                              </ul>
+                          </li>
+                      </ul>
+                  {% endfor %}
+            {% else %}
+                <h2><small>There's no requests yet.</small></h2>
+            {% endif %}
+
+            <form action="/XXX" method="post">
+                <button type="submit" class="btn btn-default btn-sm btn-fill">Log off</button>
+            </form>
         </div>
     </body>
 </html>

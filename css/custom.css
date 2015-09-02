@@ -19,3 +19,19 @@ h1 {
 .clear {
     clear: both;
 }
+
+/*.btn-danger {
+    display: none;
+}*/
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 36px;
+        position: center;
+    }
+
+}
