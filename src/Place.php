@@ -144,10 +144,5 @@
             $GLOBALS['DB']->exec("DELETE FROM places WHERE id = {$this->getId()};");
             //$GLOBALS['DB']->exec("DELETE FROM places_users WHERE place_id = {$this->getId()};");
         }
-
-
     }
-
-
-
  ?>
