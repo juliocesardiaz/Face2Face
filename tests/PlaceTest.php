@@ -7,7 +7,7 @@
 
     require_once "src/Place.php";
 
-    $server = 'mysql:host=localhost;dbname=face_to_face_test';
+    $server = 'mysql:host=localhost:8889;dbname=face_to_face_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -274,39 +274,6 @@
 
           //Assert
           $this->assertEquals($test_place->getAddress(), $new_address);
-
         }
-        // function testUpdateLocation()
-        // {
-        //   //Arrange
-        //   $place_name = "Director Park";
-        //   $address = "SW Park Ave";
-        //   $longitude = 45.518672;
-        //   $latitude = -122.681211;
-        //   $id = 1;
-        //   $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
-        //   $test_place->save();
-        //
-        //
-        //   $new_latitude = -123.683411;
-        //   $new_longitude = 44.518272;
-        //
-        //   //Act
-        //   $test_place->updateLocation($new_longitude, $new_latitude);
-        //   $new_location = array($test_place->getLongitude(),
-        //   $test_place->getLatitude());
-        //
-        //   //Assert
-        //   $this->assertEquals($new_location ,($new_longitude, $new_latitude));
-        //
-        // }
-        // function testUpdateAll
-        // {
-        //
-        // }
-
     }
-
-
-
-  ?>
+?>
