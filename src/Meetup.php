@@ -99,6 +99,21 @@
         {
             return $this->id;
         }
+
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO meetups (user1_id, user1_id,
+                user1_confirm, user1_confirm, location_id, confirm_meet_usr1,
+                confirm_meet_usr1) VALUES (
+                    {$this->getUser1_Id()},
+                    {$this->getUser2_Id()},
+                    {$this->getUser1_Confirm()},
+                    {$this->getUser2_Confirm()},
+                    {$this->getLocation_Id()},
+                    {$this->getConfirm_meet_usr1()},
+                    {$this->getConfirm_meet_usr2()},)");
+                    $this->id = $GLOBALS['DB']->lastInsertId();
+        }
     }
 
 
