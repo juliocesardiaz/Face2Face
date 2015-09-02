@@ -8,14 +8,14 @@
 
 The idea of **Face2Face** is initiated by Logan Wu with the goal to help people spend more real  time interacting with strangers in person face to face instead of in virtual spaces online. It is designed to function as a bridge to connect people for generating friendships and other meaningful relationships.
 
-### App Characteristics
+### Key characteristics
 * Allows users to see other users nearby and send them requests.
 * Suggested close-by place for users to meet up conveniently.
 * Hashed user password in the database for added security.
 
-### Future Functions to be Added
+### Future functions to be added
 * Allows group meetups in addition to two-person meetups.
-* Adds rating and commenting system for users to review each person they meet up with.
+* Adds rating and commenting system for users to review each other.
 * Incorporates Google Map to show users clear directions on where to meet.
 
 ## Setup
@@ -24,11 +24,11 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 * Start the PHP server from Terminal in the /web folder.
 * Open a web browser and navigate to ```localhost:8000```.
 
-## Technologies Used
+## Technologies used
 
 PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, Bootstrap, MySQL, and Google Map API
 
-### Legal
+## Legal
 
 Copyright (c) 2015 **Ben Spenard, Julio Diaz, Logan Wu & Nathan Young**
 
