@@ -396,8 +396,5 @@
         
           $this->assertEquals(true, $result);
         }
-=======
-
->>>>>>> 2b92ae4222d5db968d6f8dfa0a68fa8b73a64e77
     }
 ?>
