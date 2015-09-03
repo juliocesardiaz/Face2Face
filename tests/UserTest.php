@@ -342,6 +342,35 @@
             //Assert
             $this->assertEquals($test_user2, $result);
         }
+
+        function test_distanceBetweenUsers()
+        {
+            //Arrange
+            $user_name = "Nathan";
+            $password = "xxx60606";
+            $latitude = 45.558979;
+            $longitude = -122.682110;
+            $signed_in = 1;
+            $id = 1;
+            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+            $test_user->save();
+
+            $user_name2 = "John";
+            $password2 = "xxx";
+            $latitude2 = 45.559078;
+            $longitude2 = -122.630789;
+            $signed_in2 = 1;
+            $id2 = 1;
+            $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+            $test_user2->save();
+
+            //Act
+            $result = $test_user->distanceBetweenUsers($test_user2);
+            var_dump($result);
+
+            //Assert
+            $this->assertEquals($result, $result);
+        }
     }
 
     ?>
