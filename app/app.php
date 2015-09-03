@@ -41,6 +41,8 @@
         $user = new User($user_name, $password, $longitude=null, $latitude=null, $id=null);
         $user->save();
 
+        $user = User::find($id);
+
         return $app['twig']->render('users.html.twig', array("users" => User::getAll(), "requests" => $user->findMeetupRequests()));
     });
 
