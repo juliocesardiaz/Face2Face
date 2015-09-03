@@ -7,14 +7,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- get-shit-done css -->
-    <link rel="stylesheet" type="text/css" href="../css/get-shit-done.css">
+    <link rel="stylesheet" type="text/css" href="css/get-shit-done.css">
 
     <!-- custom css -->
-    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
 
     <!-- jQuery -->
-    <script src="../js/jquery-1.11.3.js"></script>
-    <scrtpt src="../js/scripts.js"></script>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/scripts.js"></script>
 
     <title>Face2Face</title>
     </head>
@@ -32,6 +32,7 @@
                 <h2><small>Users nearby you:</small></h2>
                   {% for available_user in avialable_users %}
                     <ul>
+<<<<<<< HEAD
                         <li>{{ available_user.getUserName }}
                                 <ul>                             
                                     <form action="/request_meetup" method="post">
@@ -41,6 +42,20 @@
                                             <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
                                         </div>
                                     </form>
+=======
+                        <li>{{ user.getName }}
+                            <a href="/users/{{ user.getId }}"></a>
+                                <ul>
+                                    <li>Photo: {{ user.getPhoto }}</li>
+                                    <!-- <form action="/waiting_to_confirm"> -->
+                                        <div id="initially-showing">
+                                            <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
+                                        </div>
+                                    <!-- </form> -->
+                                    <div id="initially-hidden">
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
+                                    </div>
+>>>>>>> 2b92ae4222d5db968d6f8dfa0a68fa8b73a64e77
                                 </ul>
                         </li>
                     </ul>

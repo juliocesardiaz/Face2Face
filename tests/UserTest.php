@@ -496,7 +496,6 @@
 
             //Assert
             $this->assertEquals(true, $result);
-
         }
     }
 

@@ -4,11 +4,11 @@
     {
         private $place_name;
         private $address;
-        private $longitude;
         private $latitude;
+        private $longitude;
         private $id;
 
-        function __construct($place_name, $address, $longitude, $latitude, $id = null)
+        function __construct($place_name, $address, $latitude, $longitude, $id = null)
         {
             $this->place_name = $place_name;
             $this->address = $address;
@@ -59,11 +59,11 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO places (place_name, address, longitude, latitude)
+            $GLOBALS['DB']->exec("INSERT INTO places (place_name, address, latitude, longitude)
                 VALUES ('{$this->getPlaceName()}',
                         '{$this->getAddress()}',
-                        {$this->getLongitude()},
-                        {$this->getLatitude()});");
+                        {$this->getLatitude()},
+                        {$this->getLongitude()});");
                         $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -74,10 +74,10 @@
             foreach($returned_places as $place) {
                 $place_name = $place['place_name'];
                 $address = $place['address'];
-                $longitude = $place['longitude'];
                 $latitude = $place['latitude'];
+                $longitude = $place['longitude'];
                 $id = $place['id'];
-                $new_place = new Place($place_name, $address, $longitude, $latitude, $id);
+                $new_place = new Place($place_name, $address, $latitude, $longitude, $id);
                 array_push($places, $new_place);
             }
             return $places;
@@ -115,15 +115,15 @@
             $this->setAddress($new_address);
         }
 
-        function updateLocation($new_longitude, $new_latitude)
+        function updateLocation($new_latitude, $new_longitude)
         {
-            $GLOBALS['DB']->exec("UPDATE places SET longitude, latitude VALUES =
-                {$new_longitude}, {new_latitude} WHERE id = {$this->getId()};");
-            $this->setLongitude($new_longitude);
+            $GLOBALS['DB']->exec("UPDATE places SET latitude, longitude VALUES =
+                {$new_latitude}, {new_longitude} WHERE id = {$this->getId()};");
             $this->setLatitude($new_latitude);
+            $this->setLongitude($new_longitude);
         }
 
-        function updateAll($new_place_name, $new_address, $new_longitude, $new_latitude)
+        function updateAll($new_place_name, $new_address, $new_latitude, $new_longitude)
         {
             $GLOBALS['DB']->exec("UPDATE places SET place_name =
                 '{$new_place_name}' WHERE id = {$this->getId()};");
@@ -131,9 +131,9 @@
             $GLOBALS['DB']->exec("UPDATE places SET address =
                 '{$new_address}' WHERE id = {$this->getId()};");
             $this->setAddress($new_address);
-            $GLOBALS['DB']->exec("UPDATE places SET longitude =
-                '{$new_longitude}' WHERE id = {$this->getId()};");
-            $this->setLongitude($new_longitude);
+            $GLOBALS['DB']->exec("UPDATE places SET latitude =
+                '{$new_latitude}' WHERE id = {$this->getId()};");
+            $this->setLatitude($new_latitude);
             $GLOBALS['DB']->exec("UPDATE places SET latitude =
                 '{$new_latitude}' WHERE id = {$this->getId()};");
             $this->setLatitude($new_latitude);

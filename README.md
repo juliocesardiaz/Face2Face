@@ -12,7 +12,7 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 * Mobile responsive web application.
 * Allows people to create user profiles and log in.
 * Allows users to see other users nearby and send them requests.
-* Suggests close-by location for users to meet up conveniently.
+* Generates a close-by location for each pair of users to meet up conveniently.
 * Hashed user password in the database for added security.
 
 ### Future functions to be added
@@ -28,7 +28,7 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 
 ## Technologies used
 
-PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, Bootstrap, MySQL, and Google Map API
+PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, jQuery, Bootstrap, MySQL, and Google Map API
 
 ## Legal
 

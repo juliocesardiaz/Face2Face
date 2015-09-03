@@ -44,7 +44,13 @@
         $user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id=null);
         $user->save();
 
+<<<<<<< HEAD
         return $app['twig']->render('users.html.twig', array('user' => $user, 'avialable_users' => $user->findUsersNear(), 'requests' => $user->findMeetupRequests()));
+=======
+        $user = User::find($id);
+
+        return $app['twig']->render('users.html.twig', array("users" => User::getAll(), "requests" => $user->findMeetupRequests()));
+>>>>>>> 2b92ae4222d5db968d6f8dfa0a68fa8b73a64e77
     });
 
     //log in page
