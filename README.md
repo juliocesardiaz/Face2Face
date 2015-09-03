@@ -28,7 +28,7 @@ The idea of **Face2Face** is initiated by Logan Wu with the goal to help people 
 
 ## Technologies used
 
-PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, Bootstrap, MySQL, and Google Map API
+PHP, PHPUnit, Silex, Twig, HTML, CSS, JavaScript, jQuery, Bootstrap, MySQL, and Google Map API
 
 ## Legal
 
