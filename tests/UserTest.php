@@ -19,6 +19,7 @@
         {
             User::deleteAll();
             Place::deleteAll();
+            Meetup::deleteAll();
         }
 
         function test_setUserName()
@@ -379,30 +380,31 @@
           $this->assertEquals([$test_user], $result);
         }
 
-        function test_confirmMeetupRequest()
-        {
+        // function test_confirmMeetupRequest()
+        // {
+        //
+        // }
 
-        }
+        // function test_confirmMeetUserOne()
+        // {
+        //
+        // }
+        //
+        // function test_confirmMeetUserTwo()
+        // {
+        //
+        // }
+        //
+        // function test_getMeetupLocation()
+        // {
+        //
+        // }
+        //
+        // function test_hasUserTwoConfirmed()
+        // {
+        //
+        // }
 
-        function test_confirmMeetUserOne()
-        {
-
-        }
-
-        function test_confirmMeetUserTwo()
-        {
-
-        }
-
-        function test_getMeetupLocation()
-        {
-
-        }
-
-        function test_hasUserTwoConfirmed()
-        {
-
-        }
     }
 
     ?>
