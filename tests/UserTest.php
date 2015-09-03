@@ -496,6 +496,43 @@
 
             //Assert
             $this->assertEquals(true, $result);
+        }
+
+        function test_getMeetUpLocation()
+        {
+            //Arrange
+            $user_name = "Nathan";
+            $password = "xxx60606";
+            $latitude = 45.520969;
+            $longitude = -122.679953;
+            $signed_in = 1;
+            $id = 1;
+            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+            $test_user->save();
+
+            $user_name2 = "John";
+            $password2 = "xxx";
+            $latitude2 = 45.515852;
+            $longitude2 = -122.674644;
+            $signed_in2 = 1;
+            $id2 = 1;
+            $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+            $test_user2->save();
+
+            $place_name = "Director Park";
+            $address = "SW Park Ave";
+            $longitude = 45.518672;
+            $latitude = -122.681211;
+            $id3 = 5;
+            $test_place = new Place($place_name, $address, $longitude, $latitude, $id3);
+
+            //Act
+            $test_user->addMeetUpRequest($test_user2->getId(), $test_place->getId());
+            $test_user2->confirmMeetupRequest($test_user->getId());
+        }
+
+        function test_hasUserTwoConfirmed()
+        {
 
         }
     }
