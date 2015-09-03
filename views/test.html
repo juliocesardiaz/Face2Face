@@ -1,6 +1,5 @@
 <html>
     <head>
-    <title>Face2Face</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -13,6 +12,11 @@
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
+    <!-- jQuery -->
+    <script src="../js/jquery-1.11.3.js"></script>
+    <scrtpt src="../js/scripts.js"></script>
+
+    <title>Face2Face</title>
     </head>
     <body>
         <div class="container">
@@ -24,17 +28,21 @@
 
             <!-- list of all users nearby -->
             {% if users is not empty %}
-                <h2><small>Users nearby you who want to meet up:</small></h2>
+                <h2><small>Users nearby you:</small></h2>
                   {% for user in users %}
                     <ul>
-                          <li>{{ user.getName }}
-                              <a href="/users/{{ user.getId }}"></a>
-                              <ul>
-                                  <li>Photo: {{ user.getPhoto }}</li>
-                                  <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
-                                  <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
-                              </ul>
-                          </li>
+                        <li>{{ user.getName }}
+                            <a href="/users/{{ user.getId }}"></a>
+                                <ul>
+                                    <li>Photo: {{ user.getPhoto }}</li>
+                                    <div id="initially-showing">
+                                        <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
+                                    </div>
+                                    <div id="initially-hidden">
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
+                                    </div>
+                                </ul>
+                        </li>
                     </ul>
                   {% endfor %}
             {% else %}

@@ -28,9 +28,9 @@ button {
     clear: both;
 }
 
-/*.btn-danger {
+#initially-hidden {
     display: none;
-}*/
+}
 
 @media screen and (max-width: 500px) {
     .container {

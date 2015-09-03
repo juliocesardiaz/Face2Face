@@ -13,6 +13,10 @@
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
+    <!-- jQuery -->
+    <script src="../js/jquery-1.11.3.js"></script>
+    <scrtpt src="../js/scripts.js"></script>
+
     </head>
     <body>
         <div class="container">
@@ -32,7 +36,7 @@
                               <ul>
                                   <li>Photo: {{ user.getPhoto }}</li>
                                   <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
-                                  <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
+                                  <button type="submit" class="btn btn-danger btn-sm" id="cancel">Cancel request</button>
                               </ul>
                           </li>
                     </ul>
