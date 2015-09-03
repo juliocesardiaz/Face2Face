@@ -343,34 +343,66 @@
             $this->assertEquals($test_user2, $result);
         }
 
-        function test_distanceBetweenUsers()
+        function test_addMeetUpRequest()
         {
-            //Arrange
-            $user_name = "Nathan";
-            $password = "xxx60606";
-            $latitude = 45.558979;
-            $longitude = -122.682110;
-            $signed_in = 1;
-            $id = 1;
-            $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
-            $test_user->save();
+          //Arrange
+          $user_name = "Nathan";
+          $password = "xxx60606";
+          $latitude = 45.520969;
+          $longitude = -122.679953;
+          $signed_in = 1;
+          $id = 1;
+          $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+          $test_user->save();
 
-            $user_name2 = "John";
-            $password2 = "xxx";
-            $latitude2 = 45.559078;
-            $longitude2 = -122.630789;
-            $signed_in2 = 1;
-            $id2 = 1;
-            $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
-            $test_user2->save();
+          $user_name2 = "John";
+          $password2 = "xxx";
+          $latitude2 = 45.515852;
+          $longitude2 = -122.674644;
+          $signed_in2 = 1;
+          $id2 = 1;
+          $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+          $test_user2->save();
 
-            //Act
-            $result = $test_user->distanceBetweenUsers($test_user2);
-            var_dump($result);
+          $place_name = "Director Park";
+          $address = "SW Park Ave";
+          $longitude = 45.518672;
+          $latitude = -122.681211;
+          $id = 1;
+          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
 
-            //Assert
-            $this->assertEquals($result, $result);
+          //Act
+          $test_user->addMeetUpRequest($test_user2->getId(), $test_place->getId());
+          $result = $test_user2->findMeetupRequests();
+
+          //Assert
+          $this->assertEquals([$test_user], $result);
         }
+
+        // function test_confirmMeetupRequest()
+        // {
+
+        // }
+
+        // function test_confirmMeetUserOne()
+        // {
+
+        // }
+
+        // function test_confirmMeetUserTwo()
+        // {
+
+        // }
+
+        // function test_getMeetupLocation()
+        // {
+
+        // }
+
+        // function test_hasUserTwoConfirmed()
+        // {
+
+        // }
     }
 
     ?>
