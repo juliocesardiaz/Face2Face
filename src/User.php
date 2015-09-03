@@ -280,23 +280,25 @@
 			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr2 = {$confirm_user2} WHERE user1_id = {$user1_id} AND user2_id ={$user2_id};");
 		}
 
-		function getMeetUpLocation($user1_id, $user2_id)
-		{
-			$query = ("SELECT * FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user1_id} AND confirm_meet_usr1 IS NULL;");
-			$meetup_location_id = $query[0]['location_id'];
-			$location_query = ("SELECT * FROM places WHERE id = {$meetup_location_id};");
-			$location_name = $location_query[0]['place_name'];
-			$location_address = $location_query[0]['address'];
-			$location_longitude = $location_query[0]['longitude'];
-			$location_latitude = $location_query[0]['latitude'];
-			$meet_location = new Place($location_name, $location_address, $location_longitude, $location_latitude, $location_id);
-			return $meet_location;
-		}
+		// function getMeetUpLocation($user2_id)
+		// {
+		// 	$query = ("SELECT location_id FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+		// 	$confirmation = $query[0];
+		// 	$location_query = ("SELECT * FROM places WHERE id = {$confirmation};");
+		// 	$location_name = $location_query[0]['place_name'];
+		// 	$location_address = $location_query[0]['address'];
+		// 	$location_longitude = $location_query[0]['longitude'];
+		// 	$location_latitude = $location_query[0]['latitude'];
+		// 	$meet_location = new Place($location_name, $location_address, $location_longitude, $location_latitude, $location_id);
+		// 	return $meet_location;
+		// }
 
 		function hasUserTwoConfirmed($user2_id)
 		{
-			$confirmation = $GLOBALS['DB']->query("SELECT user2_confirm FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
-			return $confirmation[0]['user2_confim'];
+			$query = $GLOBALS['DB']->query("SELECT user2_confirm FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+			$confirmation = $query->fetchAll(PDO::FETCH_ASSOC);
+			$result = $confirmation[0]['user2_confirm'];
+			return $result;
 		}
 	}
 ?>

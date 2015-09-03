@@ -163,21 +163,19 @@
             $user_lng = deg2rad($user->getLongitude());
 
             $difference_lat = $user_lat - $location_lat;
-            $difference_lng = $user_lng - $location_lng;
+			$difference_lng = $user_lng - $location_lng;
 
-            $a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat)
-             * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
-            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $distance_between_two_points = $radius_of_earth * $c;
+			$a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat) * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
+			$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+			$distance_between_two_points = $radius_of_earth * $c;
 
-            return $distance_between_two_points;
+			return $distance_between_two_points;
         }
 
         function verifyLocation($user1, $user2)
         {
             $distance_from_user1 = $this->distanceFrom($user1);
             $distance_from_user2 = $this->distanceFrom($user2);
-
             if(($distance_from_user1 <= 5000) && ($distance_from_user2 <= 5000)) {
                 return true;
             } else {
@@ -193,6 +191,15 @@
             }   else {
                 Place::setMeetupLocation($user1, $user2);
             }
+        }
+        
+        static function getMeetUpLocation($user1_id, $user2_id)
+		{
+			$query = $GLOBALS['DB']->query("SELECT location_id FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+			$location_id = $result[0]['location_id'];
+			$meetup_spot = Place::find($location_id);
+            return $meetup_spot;
         }
     }
  ?>
