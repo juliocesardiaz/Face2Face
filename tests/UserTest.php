@@ -379,32 +379,6 @@
           //Assert
           $this->assertEquals([$test_user], $result);
         }
-
-        // function test_confirmMeetupRequest()
-        // {
-        //
-        // }
-
-        // function test_confirmMeetUserOne()
-        // {
-        //
-        // }
-        //
-        // function test_confirmMeetUserTwo()
-        // {
-        //
-        // }
-        //
-        // function test_getMeetupLocation()
-        // {
-        //
-        // }
-        //
-        // function test_hasUserTwoConfirmed()
-        // {
-        //
-        // }
-
     }
 
     ?>
