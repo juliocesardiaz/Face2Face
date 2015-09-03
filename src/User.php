@@ -237,7 +237,7 @@
 
 		function addMeetUpRequest($user2_id, $location_id)
 		{
-			$GLOBALS['DB']->exec("INSERT INTO meetups (user1_id, user2_id, user1_confirm, location_id) VALUES ({$this->getId()}, {$user2_id}, {true}, {$location_id});");
+			$GLOBALS['DB']->exec("INSERT INTO meetups (user1_id, user2_id, user1_confirm, location_id) VALUES ({$this->getId()}, {$user2_id}, true, {$location_id});");
 		}
 
 		function findMeetupRequests()
@@ -250,13 +250,13 @@
 				$user_requesting_id = $requested_meetup['user1_id'];
 				$result = $GLOBALS['DB']->query("SELECT * FROM users WHERE id = {$user_requesting_id};");
 				$user_request = $result->fetchAll(PDO::FETCH_ASSOC);
-				$user_name = $user_request[0]['name'];
+				$user_name = $user_request[0]['user_name'];
 				$user_password = $user_request[0]['password'];
 				$user_lng = (float) $user_request[0]['longitude'];
 				$user_lat = (float) $user_request[0]['latitude'];
 				$user_signedin = (int) $user_request[0]['signed_in'];
 				$user_id = $user_request[0]['id'];
-
+				
 				$user_requested = new User($user_name, $user_password, $user_lng, $user_lat, $user_signedin, $user_id);
 				$user_requested->setPassword($user_password);
 
@@ -289,7 +289,6 @@
 			$location_address = $location_query[0]['address'];
 			$location_longitude = $location_query[0]['longitude'];
 			$location_latitude = $location_query[0]['latitude'];
-
 			$meet_location = new Place($location_name, $location_address, $location_longitude, $location_latitude, $location_id);
 			return $meet_location;
 		}
@@ -298,7 +297,6 @@
 		{
 			$confirmation = $GLOBALS['DB']->query("SELECT user2_confirm FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
 			return $confirmation[0]['user2_confim'];
-
 		}
 	}
 ?>
