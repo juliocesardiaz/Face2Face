@@ -1,6 +1,6 @@
-$(document).ready(function() {
-    $(".btn-info").click(function() {
-        $(".btn-info").hide();
-        $(".btn-danger").show();
+$(function() {
+    $("button").click(function() {
+        $("#initially-showing").toogle();
+        $("#initially-hidden").toogle();
     });
 });
