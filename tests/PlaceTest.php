@@ -328,39 +328,40 @@
         //     $test_user2->save();
         //
         // }
-        // function test_verifyLocation()
-        // {
-        //   $place_name2 = "Director Park";
-        //   $address2 = "SW Park Ave";
-        //   $longitude2 = 45.518672;
-        //   $latitude2 = -122.681211;
-        //   $id2 = 2;
-        //   $test_place2 = new Place($place_name2, $address2, $longitude2, $latitude2, $id2);
-        //   $test_place->save();
-        //
-        //   $user_name = "Nathan";
-        //   $password = "xxx60606";
-        //   $latitude = 45.518672;
-        //   $longitude = -122.681215;
-        //   $signed_in = 1;
-        //   $id = 1;
-        //   $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
-        //   $test_user->save();
-        //
-        //   $user_name2 = "John";
-        //   $password2 = "xxx";
-        //   $latitude2 = 45.518672;
-        //   $longitude2 = -122.681218;
-        //   $signed_in2 = 1;
-        //   $id2 = 1;
-        //   $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
-        //   $test_user2->save();
-        //
-        //
-        //
-        //   $result = $test_place2->verifyLocation($test_user, $test_user2);
-        //
-        //   $this->assertEquals(true, $result);
-        // }
+        function test_verifyLocation()
+        {
+          $place_name2 = "Director Park";
+          $address2 = "SW Park Ave";
+          $longitude2 = 45.518672;
+          $latitude2 = -122.681211;
+          $id2 = 2;
+          $test_place = new Place($place_name2, $address2, $longitude2, $latitude2, $id2);
+          $test_place->save();
+        
+          $user_name = "Nathan";
+          $password = "xxx60606";
+          $latitude = 45.518672;
+          $longitude = -122.681215;
+          $signed_in = 1;
+          $id = 1;
+          $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+          $test_user->save();
+        
+          $user_name2 = "John";
+          $password2 = "xxx";
+          $latitude2 = 45.518672;
+          $longitude2 = -122.681218;
+          $signed_in2 = 1;
+          $id2 = 1;
+          $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+          $test_user2->save();
+        
+        
+          $var = $test_place->distanceFrom($test_user2);
+          var_dump($var);
+          $result = $test_place->verifyLocation($test_user, $test_user2);
+        
+          $this->assertEquals(true, $result);
+        }
     }
 ?>
