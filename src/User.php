@@ -295,6 +295,7 @@
 		function hasUserTwoConfirmed($user2_id)
 		{
 			$confirmation = $GLOBALS['DB']->query("SELECT user2_confirm FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+			return $confirmation[0]['user2_confim'];
 			
 		}
 	}
