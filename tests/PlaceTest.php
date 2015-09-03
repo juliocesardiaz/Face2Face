@@ -25,10 +25,10 @@
             //Arrange
             $place_name = "Director Park";
             $address = "SW Park Ave";
-            $longitude = 45.518672;
-            $latitude = -122.681211;
+            $latitude = 45.518672;
+            $longitude = -122.681211;
             $id = 1;
-            $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+            $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
             //Act
             $test_place->setPlaceName($place_name);
@@ -44,10 +44,10 @@
             //Arrange
             $place_name = "Director Park";
             $address = "SW Park Ave";
-            $longitude = 45.518672;
-            $latitude = -122.681211;
+            $latitude = 45.518672;
+            $longitude = -122.681211;
             $id = 1;
-            $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+            $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
             //Act
             $result = $test_place->getPlaceName();
@@ -61,10 +61,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $result = $test_place->getAddress($address);
@@ -79,10 +79,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $result = $test_place->getAddress();
@@ -97,17 +97,17 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $test_place->setLongitude($longitude);
           $result = $test_place->getLongitude();
 
           //Assert
-          $this->assertEquals("45.518672", $result);
+          $this->assertEquals("-122.681211", $result);
 
         }
 
@@ -116,10 +116,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $result = $test_place->getLongitude();
@@ -134,17 +134,17 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $test_place->setLatitude($latitude);
           $result = $test_place->getLatitude();
 
           //Assert
-          $this->assertEquals("-122.681211", $result);
+          $this->assertEquals("45.518672", $result);
 
         }
 
@@ -153,10 +153,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $result = $test_place->getLatitude();
@@ -171,10 +171,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
 
           //Act
           $result = $test_place->getId();
@@ -188,10 +188,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           //Act
@@ -205,10 +205,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           //Act
@@ -222,10 +222,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           //Act
@@ -241,10 +241,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           $new_place_name = "Park Lane Park";
@@ -262,10 +262,10 @@
           //Arrange
           $place_name = "Director Park";
           $address = "SW Park Ave";
-          $longitude = 45.518672;
-          $latitude = -122.681211;
+          $latitude = 45.518672;
+          $longitude = -122.681211;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           $new_address = "NW West Ave";
@@ -281,26 +281,26 @@
         {
           $place_name = "Bombay Chaat House";
           $address = "804 SW Yamhill St";
-          $longitude = 43.519830;
-          $latitude = -122.684370;
+          $latitude = 43.519830;
+          $longitude = -122.684370;
           $id = 1;
-          $test_place = new Place($place_name, $address, $longitude, $latitude, $id);
+          $test_place = new Place($place_name, $address, $latitude, $longitude, $id);
           $test_place->save();
 
           $place_name2 = "Nordstrom Downtown Portland";
           $address2 = "701 SW Broadway";
-          $longitude2 = 45.519229;
-          $latitude2 = -122.680314;
+          $latitude2 = 45.519229;
+          $longitude2 = -122.680314;
           $id2 = 2;
-          $test_place2 = new Place($place_name2, $address2, $longitude2, $latitude2, $id2);
+          $test_place2 = new Place($place_name2, $address2, $latitude2, $longitude2, $id2);
           $test_place2->save();
 
           $place_name3 = "Banana Republic";
           $address3 = "710 SW Yamhill St";
-          $longitude3 = 45.518594;
-          $latitude3 = -122.680357;
+          $latitude3 = 45.518594;
+          $longitude3 = -122.680357;
           $id3 = 3;
-          $test_place3 = new Place($place_name3, $address3, $longitude3, $latitude3, $id3);
+          $test_place3 = new Place($place_name3, $address3, $latitude3, $longitude3, $id3);
           $test_place3->save();
 
           $result = Place::generateLocation();
@@ -312,8 +312,8 @@
         {
           $place_name2 = "Banana Republic";
           $address2 = "710 SW Yamhill St";
-          $longitude2 = 45.518594;
-          $latitude2 = -122.680357;
+          $latitude2 = 45.518594;
+          $longitude2 = -122.680357;
           $id2 = 2;
           $test_place2 = new Place($place_name2, $address2, $longitude2, $latitude2, $id2);
           $test_place2->save();
@@ -332,8 +332,8 @@
           $latitude2 = 45.519353;
           $longitude2 = -122.679616;
           $signed_in2 = 1;
-          $id2 = 1;
-          $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id2);
+          $id3 = 1;
+          $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id3);
           $test_user2->save();
 
           $result = $test_place2->verifyLocation($test_user, $test_user2);
