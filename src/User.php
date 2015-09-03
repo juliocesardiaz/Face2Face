@@ -284,7 +284,7 @@
 		{
 			$query = ("SELECT * FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user1_id} AND confirm_meet_usr1 IS NULL;");
 			$meetup_location_id = $query[0]['location_id'];
-			$location_query = ("SELECT * FROM palces WHERE id = {$meetup_location_id};");
+			$location_query = ("SELECT * FROM places WHERE id = {$meetup_location_id};");
 			$location_name = $location_query[0]['place_name'];
 			$location_address = $location_query[0]['address'];
 			$location_longitude = $location_query[0]['longitude'];
