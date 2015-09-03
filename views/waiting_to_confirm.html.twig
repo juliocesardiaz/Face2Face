@@ -18,12 +18,15 @@
         <div class="container">
             <h1>Face2Face</h1>
                 <div class="alert alert-info" role="alert">
-                Waiting for {{ user2 }} to cofirm.
+                <form action="/wait_for_confirmation">
+                    <input id="user2_id" name="user2_id" type="hidden" value="{{ user2_id }}">
+                    <input id="user1_id" name="user1_id" type="hidden" value="{{ user1_id }}">
+                    <div id="initially-showing">
+                        <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
+                    </div>
+                </form>
                 </div>
-
-            <form action="/">
-                <button type="submit" class="btn btn-default btn-sm">Return home</button>
-            </form>
+                
         </div>
     </body>
 </html>

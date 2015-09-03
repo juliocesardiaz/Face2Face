@@ -28,22 +28,19 @@
             <h1>Face2Face</h1>
 
             <!-- list of all users nearby -->
-            {% if users is not empty %}
+            {% if avialable_users is not empty %}
                 <h2><small>Users nearby you:</small></h2>
-                  {% for user in users %}
+                  {% for available_user in avialable_users %}
                     <ul>
-                        <li>{{ user.getName }}
-                            <a href="/users/{{ user.getId }}"></a>
-                                <ul>
-                                    <li>Photo: {{ user.getPhoto }}</li>
-                                    <!-- <form action="/waiting_to_confirm"> -->
+                        <li>{{ available_user.getUserName }}
+                                <ul>                             
+                                    <form action="/request_meetup" method="post">
+                                        <input id="user2_id" name="user2_id" type="hidden" value="{{ available_user.getId() }}">
+                                        <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId() }}">
                                         <div id="initially-showing">
                                             <button type="submit" class="btn btn-info btn-sm">Request to meet up</button>
                                         </div>
-                                    <!-- </form> -->
-                                    <div id="initially-hidden">
-                                        <button type="submit" class="btn btn-danger btn-sm">Cancel request</button>
-                                    </div>
+                                    </form>
                                 </ul>
                         </li>
                     </ul>

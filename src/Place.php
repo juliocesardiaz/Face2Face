@@ -4,11 +4,11 @@
     {
         private $place_name;
         private $address;
-        private $longitude;
         private $latitude;
+        private $longitude;
         private $id;
 
-        function __construct($place_name, $address, $longitude, $latitude, $id = null)
+        function __construct($place_name, $address, $latitude, $longitude, $id = null)
         {
             $this->place_name = $place_name;
             $this->address = $address;
@@ -59,11 +59,11 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO places (place_name, address, longitude, latitude)
+            $GLOBALS['DB']->exec("INSERT INTO places (place_name, address, latitude, longitude)
                 VALUES ('{$this->getPlaceName()}',
                         '{$this->getAddress()}',
-                        {$this->getLongitude()},
-                        {$this->getLatitude()});");
+                        {$this->getLatitude()},
+                        {$this->getLongitude()});");
                         $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -74,10 +74,10 @@
             foreach($returned_places as $place) {
                 $place_name = $place['place_name'];
                 $address = $place['address'];
-                $longitude = $place['longitude'];
                 $latitude = $place['latitude'];
+                $longitude = $place['longitude'];
                 $id = $place['id'];
-                $new_place = new Place($place_name, $address, $longitude, $latitude, $id);
+                $new_place = new Place($place_name, $address, $latitude, $longitude, $id);
                 array_push($places, $new_place);
             }
             return $places;
@@ -115,15 +115,15 @@
             $this->setAddress($new_address);
         }
 
-        function updateLocation($new_longitude, $new_latitude)
+        function updateLocation($new_latitude, $new_longitude)
         {
-            $GLOBALS['DB']->exec("UPDATE places SET longitude, latitude VALUES =
-                {$new_longitude}, {new_latitude} WHERE id = {$this->getId()};");
-            $this->setLongitude($new_longitude);
+            $GLOBALS['DB']->exec("UPDATE places SET latitude, longitude VALUES =
+                {$new_latitude}, {new_longitude} WHERE id = {$this->getId()};");
             $this->setLatitude($new_latitude);
+            $this->setLongitude($new_longitude);
         }
 
-        function updateAll($new_place_name, $new_address, $new_longitude, $new_latitude)
+        function updateAll($new_place_name, $new_address, $new_latitude, $new_longitude)
         {
             $GLOBALS['DB']->exec("UPDATE places SET place_name =
                 '{$new_place_name}' WHERE id = {$this->getId()};");
@@ -131,9 +131,9 @@
             $GLOBALS['DB']->exec("UPDATE places SET address =
                 '{$new_address}' WHERE id = {$this->getId()};");
             $this->setAddress($new_address);
-            $GLOBALS['DB']->exec("UPDATE places SET longitude =
-                '{$new_longitude}' WHERE id = {$this->getId()};");
-            $this->setLongitude($new_longitude);
+            $GLOBALS['DB']->exec("UPDATE places SET latitude =
+                '{$new_latitude}' WHERE id = {$this->getId()};");
+            $this->setLatitude($new_latitude);
             $GLOBALS['DB']->exec("UPDATE places SET latitude =
                 '{$new_latitude}' WHERE id = {$this->getId()};");
             $this->setLatitude($new_latitude);
@@ -163,21 +163,19 @@
             $user_lng = deg2rad($user->getLongitude());
 
             $difference_lat = $user_lat - $location_lat;
-            $difference_lng = $user_lng - $location_lng;
+			$difference_lng = $user_lng - $location_lng;
 
-            $a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat)
-             * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
-            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $distance_between_two_points = $radius_of_earth * $c;
+			$a = (sin($difference_lat/2) * sin($difference_lat/2)) + (cos($location_lat) * cos($user_lat) * (sin($difference_lng/2) * sin($difference_lng/2)));
+			$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+			$distance_between_two_points = $radius_of_earth * $c;
 
-            return $distance_between_two_points;
+			return $distance_between_two_points;
         }
 
         function verifyLocation($user1, $user2)
         {
             $distance_from_user1 = $this->distanceFrom($user1);
             $distance_from_user2 = $this->distanceFrom($user2);
-
             if(($distance_from_user1 <= 5000) && ($distance_from_user2 <= 5000)) {
                 return true;
             } else {
@@ -193,6 +191,15 @@
             }   else {
                 Place::setMeetupLocation($user1, $user2);
             }
+        }
+        
+        static function getMeetUpLocation($user1_id, $user2_id)
+		{
+			$query = $GLOBALS['DB']->query("SELECT location_id FROM meetups WHERE user1_id = {$user1_id} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+			$location_id = $result[0]['location_id'];
+			$meetup_spot = Place::find($location_id);
+            return $meetup_spot;
         }
     }
  ?>
