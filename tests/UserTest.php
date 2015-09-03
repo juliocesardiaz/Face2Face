@@ -413,6 +413,7 @@
             $test_user->addMeetUpRequest($test_user2->getId(), $test_place->getId());
             $test_user2->confirmMeetupRequest($test_user->getId());
             $meetup_array = Meetup::getAll();
+            var_dump($meetup_array);
             $result = $meetup_array[0]->getUser2_Confirm();
 
             //Assert
