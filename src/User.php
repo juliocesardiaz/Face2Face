@@ -270,14 +270,14 @@
 			$GLOBALS['DB']->exec("UPDATE meetups SET user2_confirm = true WHERE user1_id = {$user_id} AND user2_id = {$this->getId()};");
 		}
 
-		function confirmMeetUserOne($user1_id, $user2_id, $confirm_user1)
+		function confirmMeetUserOne($user2_id, $confirm_user1)
 		{
-			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr1 = {$confirm_user1} WHERE user1_id = {$user1_id} AND user2_id ={$user2_id};");
+			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr1 = {$confirm_user1} WHERE user1_id = {4this->getId()} AND user2_id ={$user2_id};");
 		}
 
-		function confirmMeetUserTwo($user1_id, $user2_id, $confirm_user2)
+		function confirmMeetUserTwo($user1_id, $confirm_user2)
 		{
-			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr2 = {$confirm_user2} WHERE user1_id = {$user1_id} AND user2_id ={$user2_id};");
+			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr2 = {$confirm_user2} WHERE user1_id = {$user1_id} AND user2_id ={$this->getId()};");
 		}
 
 		// function getMeetUpLocation($user2_id)

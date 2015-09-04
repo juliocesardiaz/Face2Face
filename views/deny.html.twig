@@ -12,19 +12,15 @@
 
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
-    </head>
 
+    </head>
     <body>
         <div class="container">
             <h1>Face2Face</h1>
-            <div class="alert alert-success" role="alert">Confirmed!</div>
-            <p>
-                You are meeting <strong>{{ user_to_meet.getUserName }}</strong><br>
-                Location to meet: <strong>{{ location.getPlaceName }}</strong><br>
-                Address: <strong>{{ location.getAddress }}</strong>
-            </p>
-            <form action="/">
-                <button type="submit" class="btn btn-default btn-sm">Return home</button>
+               <h2>Sorry The Meetup Didn't Happen. Maybe Next Time</h2>
+               <form action="/go_home">
+                <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId }}">
+                <button type="submit" class="btn btn-default btn-sm">Check For More Meetups</button>
             </form>
         </div>
     </body>
