@@ -315,7 +315,7 @@
           $latitude2 = 45.518594;
           $longitude2 = -122.680357;
           $id2 = 2;
-          $test_place2 = new Place($place_name2, $address2, $longitude2, $latitude2, $id2);
+          $test_place2 = new Place($place_name2, $address2, $latitude2, $longitude2, $id2);
           $test_place2->save();
 
           $user_name = "Nathan";
@@ -324,7 +324,7 @@
           $longitude = -122.678999;
           $signed_in = 1;
           $id = 1;
-          $test_user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id);
+          $test_user = new User($user_name, $password, $latitude, $longitude, $signed_in, $id);
           $test_user->save();
 
           $user_name2 = "John";
@@ -333,7 +333,7 @@
           $longitude2 = -122.679616;
           $signed_in2 = 1;
           $id3 = 1;
-          $test_user2 = new User($user_name2, $password2, $longitude2, $latitude2, $signed_in2, $id3);
+          $test_user2 = new User($user_name2, $password2, $latitude2, $longitude2, $signed_in2, $id3);
           $test_user2->save();
 
           $result = $test_place2->verifyLocation($test_user, $test_user2);
