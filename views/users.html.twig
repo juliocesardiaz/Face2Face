@@ -56,32 +56,20 @@
                 <h2><small>Requests you received to meet up:</small></h2>
                   {% for request in requests %}
                       <ul>
-                          <li>{{ user.getName }}
-                              <a href="/users/{{ user.getId }}"></a>
-                              <ul>
-                                  <li>Photo: {{ user.getPhoto }}</li>
-                              </ul>
+                          <li>{{ request.getUserName }}
+                              <form action="/confirm_request" method="post">
+                                <input id="user2_id" name="user2_id" type="hidden" value="{{ request.getId }}">
+                                <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId }}">
+                                <div id="initially-showing">
+                                    <button type="submit" class="btn btn-info btn-sm">Accept Request</button>
+                                </div>
+                              </form>
                           </li>
                       </ul>
                   {% endfor %}
             {% else %}
                 <h2><small>There's no requests yet.</small></h2>
             {% endif %}
-
-            <hr noshade size=4 width=100% align=left>
-
-            <!-- see the confirmed meetup -->
-            <form action="/confirmed">
-                <button type="submit" class="btn btn-success btn">Confirmed meetup</button>
-            </form>
-
-            <hr noshade size=4 width=100% align=left>
-
-            <!-- see history of all meetups -->
-            <form action="/history">
-                <button type="submit" class="btn btn-default btn">My meetup history</button>
-            </form>
-
         </div>
     </body>
 </html>

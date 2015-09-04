@@ -11,20 +11,21 @@
     <link rel="stylesheet" type="text/css" href="css/get-shit-done.css">
 
     <!-- custom css -->
+<<<<<<< HEAD:views/deny.html.twig
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+=======
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     </head>
+>>>>>>> 45ea08c766ec7a98d9c9474a518394061e8ba85c:views/confirmed.html.twig
 
+    </head>
     <body>
         <div class="container">
             <h1>Face2Face</h1>
-            <div class="alert alert-success" role="alert">Confirmed!</div>
-            <p>
-                You are meeting <strong>{{ user_to_meet.getUserName }}</strong><br>
-                Location to meet: <strong>{{ location.getPlaceName }}</strong><br>
-                Address: <strong>{{ location.getAddress }}</strong>
-            </p>
-            <form action="/">
-                <button type="submit" class="btn btn-default btn-sm">Return home</button>
+               <h2>Sorry The Meetup Didn't Happen. Maybe Next Time</h2>
+               <form action="/go_home">
+                <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId }}">
+                <button type="submit" class="btn btn-default btn-sm">Check For More Meetups</button>
             </form>
         </div>
     </body>

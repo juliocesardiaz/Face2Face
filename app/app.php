@@ -83,15 +83,52 @@
             if(($user1->hasUserTwoConfirmed($user2->getId()))) {
                 $location = Place::getMeetUpLocation($user1->getId(), $user2->getId());
                 // $location = Place::find(1);
-                return $app['twig']->render('confirmed.html.twig', array('user_to_meet' => $user2, 'user' => $user1, 'location' => $location));
+                return $app['twig']->render('confirmed_user1.html.twig', array('user_to_meet' => $user2, 'user' => $user1, 'location' => $location));
             } else {
                 return $app['twig']->render('rejected.html.twig', array('user' => $user1, 'user_to_meet' => $user2));
             }
         }
     });
-    //meetup history page
-
-    //directions page
-
+    $app->post("/confirm_request", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        
+        $user1->confirmMeetupRequest($user2->getId());
+        $location = Place::getMeetUpLocation($user2->getId(), $user1->getId());
+        return $app['twig']->render('confirmed_user2.html.twig', array('user_to_meet' => $user2, 'user' => $user1, 'location' => $location));
+    });
+    
+    $app->post("/user1_confirm_meet", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        $user1->confirmMeetUserOne($user2->getId(), true);
+        return $app['twig']->render('confirmation.html.twig', array('user' => $user1));
+    });
+    
+    $app->post("/user2_confirm_meet", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        $user1->confirmMeetUserTwo($user2->getId(), true);
+        return $app['twig']->render('confirmation.html.twig', array('user' => $user1));
+    });
+    
+    $app->post("/user1_deny_meet", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        $user1->confirmMeetUserOne($user2->getId(), false);
+        return $app['twig']->render('deny.html.twig', array('user' => $user1));
+    });
+    
+    $app->post("/user2_deny_meet", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        $user1->confirmMeetUserTwo($user2->getId(), false);
+        return $app['twig']->render('deny.html.twig', array('user' => $user1));
+    });
+    
+    $app->get("go_home", function() use ($app) {
+        $user = User::find($_GET['user1_id']);
+        return $app['twig']->render('users.html.twig', array('user' => $user, 'avialable_users' => $user->findUsersNear(), 'requests' => $user->findMeetupRequests()));
+    });
     return $app;
 ?>

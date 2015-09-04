@@ -270,28 +270,15 @@
 			$GLOBALS['DB']->exec("UPDATE meetups SET user2_confirm = true WHERE user1_id = {$user_id} AND user2_id = {$this->getId()};");
 		}
 
-		function confirmMeetUserOne($user1_id, $user2_id, $confirm_user1)
+		function confirmMeetUserOne($user2_id, $confirm_user1)
 		{
-			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr1 = {$confirm_user1} WHERE user1_id = {$user1_id} AND user2_id ={$user2_id};");
+			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr1 = {$confirm_user1} WHERE user1_id = {4this->getId()} AND user2_id ={$user2_id};");
 		}
 
-		function confirmMeetUserTwo($user1_id, $user2_id, $confirm_user2)
+		function confirmMeetUserTwo($user1_id, $confirm_user2)
 		{
-			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr2 = {$confirm_user2} WHERE user1_id = {$user1_id} AND user2_id ={$user2_id};");
+			$GLOBALS['DB']->exec("UPDATE meetups SET confirm_meet_usr2 = {$confirm_user2} WHERE user1_id = {$user1_id} AND user2_id ={$this->getId()};");
 		}
-
-		// function getMeetUpLocation($user2_id)
-		// {
-		// 	$query = ("SELECT location_id FROM meetups WHERE user1_id = {$this->getId()} AND user2_id = {$user2_id} AND confirm_meet_usr1 IS NULL;");
-		// 	$confirmation = $query[0];
-		// 	$location_query = ("SELECT * FROM places WHERE id = {$confirmation};");
-		// 	$location_name = $location_query[0]['place_name'];
-		// 	$location_address = $location_query[0]['address'];
-		// 	$location_longitude = $location_query[0]['longitude'];
-		// 	$location_latitude = $location_query[0]['latitude'];
-		// 	$meet_location = new Place($location_name, $location_address, $location_longitude, $location_latitude, $location_id);
-		// 	return $meet_location;
-		// }
 
 		function hasUserTwoConfirmed($user2_id)
 		{
