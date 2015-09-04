@@ -64,6 +64,14 @@
                                     <button type="submit" class="btn btn-info btn-sm">Accept Request</button>
                                 </div>
                               </form>
+                              
+                              <form action="/reject_request" method="post">
+                                <input id="user2_id" name="user2_id" type="hidden" value="{{ request.getId }}">
+                                <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId }}">
+                                <div id="initially-showing">
+                                    <button type="submit" class="btn btn-info btn-sm">Reject Request</button>
+                                </div>
+                              </form>
                           </li>
                       </ul>
                   {% endfor %}

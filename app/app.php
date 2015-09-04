@@ -97,6 +97,14 @@
         return $app['twig']->render('confirmed_user2.html.twig', array('user_to_meet' => $user2, 'user' => $user1, 'location' => $location));
     });
     
+    $app->post("/reject_request", function() use ($app) {
+        $user1 = User::find($_POST['user1_id']);
+        $user2 = User::find($_POST['user2_id']);
+        
+        $user1->rejectMeetupRequest($user2->getId());
+        return $app['twig']->render('users.html.twig', array('user' => $user1, 'avialable_users' => $user1->findUsersNear(), 'requests' => $user1->findMeetupRequests()));
+    });
+    
     $app->post("/user1_confirm_meet", function() use ($app) {
         $user1 = User::find($_POST['user1_id']);
         $user2 = User::find($_POST['user2_id']);
