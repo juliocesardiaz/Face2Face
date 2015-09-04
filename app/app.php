@@ -66,8 +66,8 @@
     $app->post("/request_meetup", function() use ($app) {
         $user1 = User::find($_POST['user1_id']);
         $user2 = User::find($_POST['user2_id']);
-        // $location = Place::setMeetupLocation($user1, $user2);
-        $user1->addMeetUpRequest($user2->getId(), 1);
+        $location = Place::setMeetupLocation($user1, $user2);
+        $user1->addMeetUpRequest($user2->getId(), $location->getId());
         
         return $app['twig']->render('waiting_to_confirm.html.twig', array('user1_id' => $user1->getId(), 'user2_id' => $user2->getId()));
     });
@@ -82,7 +82,6 @@
         } else {
             if(($user1->hasUserTwoConfirmed($user2->getId()))) {
                 $location = Place::getMeetUpLocation($user1->getId(), $user2->getId());
-                // $location = Place::find(1);
                 return $app['twig']->render('confirmed_user1.html.twig', array('user_to_meet' => $user2, 'user' => $user1, 'location' => $location));
             } else {
                 return $app['twig']->render('rejected.html.twig', array('user' => $user1, 'user_to_meet' => $user2));
