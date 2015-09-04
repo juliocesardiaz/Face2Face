@@ -17,15 +17,11 @@
     <body>
         <div class="container">
             <h1>Face2Face</h1>
-                <div class="alert alert-info alert-dismissible" role="alert">
-                    <form action="/wait_for_confirmation">
-                        <input id="user2_id" name="user2_id" type="hidden" value="{{ user2_id }}">
-                        <input id="user1_id" name="user1_id" type="hidden" value="{{ user1_id }}">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        Requested to meet up.
-                    </form>
-                </div>
-
+                <form action="/wait_for_confirmation">
+                    <input id="user2_id" name="user2_id" type="hidden" value="{{ user2_id }}">
+                    <input id="user1_id" name="user1_id" type="hidden" value="{{ user1_id }}">
+                    <h2><button type="submit" class="btn btn-info btn-fill">Check If User Has Confirmed</button></h2>
+                </form>
         </div>
     </body>
 </html>
