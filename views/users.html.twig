@@ -33,7 +33,7 @@
                   {% for available_user in avialable_users %}
                     <ul>
                         <li>{{ available_user.getUserName }}
-                                <ul>                             
+                                <ul>
                                     <form action="/request_meetup" method="post">
                                         <input id="user2_id" name="user2_id" type="hidden" value="{{ available_user.getId() }}">
                                         <input id="user1_id" name="user1_id" type="hidden" value="{{ user.getId() }}">
