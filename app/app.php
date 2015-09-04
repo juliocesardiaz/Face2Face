@@ -37,8 +37,8 @@
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
         $retype_password = $_POST['retype_password'];
-        $longitude = 45.516231;
-        $latitude = -122.682519;
+        $latitude = 45.516231;
+        $longitude = -122.682519;
         $signed_in = true;
 
         $user = new User($user_name, $password, $longitude, $latitude, $signed_in, $id=null);

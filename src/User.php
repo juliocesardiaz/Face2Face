@@ -205,13 +205,14 @@
 		function findUsersNear()
 		{
 			$users = User::getAll();
+			$user_requesting = $this->findMeetupRequests();
 			$users_near = array();
 
 			foreach($users as $user) {
 				if($user->getId() != $this->getId()) {
 					$distance = $this->distanceBetweenUsers($user);
 					$user_online = $user->getSignedIn();
-					if(($distance <= 5000) && ($user_online == true)) {
+					if(($distance <= 5000) && ($user_online == true) && !(in_array($user, $user_requesting))) {
 						array_push($users_near, $user);
 					}
 				}
